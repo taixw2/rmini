@@ -14,7 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "test": "ava"
@@ -25,5 +25,6 @@
   },
   "devDependencies": {
     "ava": "^2.4.0"
-  }
+  },
+  "gitHead": "e217a13669dccf3f96f2509abf0b731e1a3a1b28"
 }
