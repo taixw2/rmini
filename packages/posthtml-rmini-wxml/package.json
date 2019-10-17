@@ -1,0 +1,27 @@
+{
+  "name": "@rmini/posthtml-rmini-wxml",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "mro <fex@0000o.net>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "lib/posthtml-rmini-wxml.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": { "registry": "https://npm.pkg.github.com" },
+  "scripts": {
+    "test": "ava"
+  },
+  "dependencies": {
+    "posthtml": "^0.12.0",
+    "posthtml-parser": "^0.4.1"
+  },
+  "devDependencies": {
+    "ava": "^2.4.0"
+  }
+}
