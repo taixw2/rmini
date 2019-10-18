@@ -43,6 +43,6 @@ function triggerEvent(originalAttrs, originalKey, event, bindType) {
   Reflect.deleteProperty(attrs, originalKey)
   // 所有的事件都触发 triggerEvent
   // 通过钩子把事件传递给原始的 JSC 执行
-  attrs[`v-on:${evnentName}`] = `triggerEvent('${bindFunction}', $event)`
+  attrs[`v-on:${evnentName}`] = `triggerEvent('${evnentName}', '${bindFunction}', $event)`
   return attrs
 }
