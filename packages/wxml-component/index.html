@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script type="module" src="./build/index.js"></script>
+  <style>
+    body {
+      position: relative;
+      font-size: 24px;
+    }
+    .sandbox {
+      width: 750px;
+      height: 1334px;
+      overflow: hidden;
+      display: block;
+      position: relative;
+      background: #eee;
+      transform: scale(0.5);
+      transform-origin:top left;
+    }
+
+  </style>
+</head>
+  <body>
+    <!-- <my-element></my-element> -->
+
+    <div class="sandbox" id="app">
+      <rmini-scroll-view v-bind:scroll-x="bool" v-bind:scroll-y="bool" bindscrolltoupper="hello" bindscrolltolower="olleh">
+        <div style="height: 2000px; width: 2000px;">
+          <rmini-text>你好</rmini-text>
+          <rmini-input style="background: red; width: 200px" bindinput="onInputChange" v-bind:value="message" />
+        </div>
+      </rmini-scroll-view>
+    </div>
+
+    <script>
+      window.__vm = new Vue({
+        el: '#app',
+        data: {
+          bool: true,
+          message: 'Hello Vue!'
+        },
+
+        methods: {
+          triggerEvent(eventName, eventHandler, event) {
+            // console.log("TCL: triggerEvent -> eventName, eventHandler, event", eventName, eventHandler, event)
+            // this.message = "222" + Math.random()
+            // console.log("TCL: triggerEvent -> event", event)
+            // console.log("TCL: triggerEvent -> eventHandler", eventHandler)
+            // console.log("TCL: triggerEvent -> eventName", eventName)
+          }
+        }
+      })
+    </script>
+    
+  </body>
+</html>
