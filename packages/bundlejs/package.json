@@ -1,0 +1,38 @@
+{
+  "name": "composejs",
+  "version": "0.0.1",
+  "description": "> TODO: description",
+  "author": "mro <fex@0000o.net>",
+  "homepage": "https://github.com/taixw2/rmini#readme",
+  "license": "MIT",
+  "main": "lib/composejs.js",
+  "directories": {
+    "lib": "lib",
+    "test": "jest"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npm.taobao.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taixw2/rmini.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/taixw2/rmini/issues"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "dependencies": {
+    "rollup": "^1.27.0",
+    "temp": "^0.9.1"
+  }
+}

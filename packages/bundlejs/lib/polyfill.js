@@ -1,7 +1,6 @@
+import wx from './api'
 
-import './api'
-
-let appConfig = /**/{}/**/;
+let $$appConfig = /**/{}/**/;
 
 const $$private = {
   lifecycle: {
@@ -48,4 +47,3 @@ function Page(option) {
   $$private.bundle.pages[Page.__path__].__path = Page.__path__;
   $$private.bundle.pages[Page.__path__].setData = setData;
 }
-
