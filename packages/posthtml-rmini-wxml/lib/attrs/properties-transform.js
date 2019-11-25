@@ -1,5 +1,7 @@
 
-module.exports = function(originalNode, key) {
+const COMP_VAL_REG = /^\{\{(.*)\}\}$/;
+
+module.exports = function (originalNode, key) {
   const node = { ...originalNode }
 
   switch (key) {
@@ -17,7 +19,7 @@ module.exports = function(originalNode, key) {
       transform(node, key, 'v-show');
       node['v-show'] = `!(${node['v-show']})`;
       break;
-    case 'wx:for': 
+    case 'wx:for':
       transformFor(node);
       break;
     // 以下几个属性依赖 wx:for
@@ -29,6 +31,7 @@ module.exports = function(originalNode, key) {
       break;
   }
 
+  transformComputeValue(node)
   return node
 }
 
@@ -38,7 +41,7 @@ module.exports = function(originalNode, key) {
  * @param {*} value 
  */
 function removeParentheses(value) {
-  return value ? value.replace(/^\{\{(.*)\}\}$/, '$1') : value
+  return value ? value.replace(COMP_VAL_REG, '$1') : value
 }
 
 /**
@@ -62,7 +65,7 @@ function transformFor(node) {
   const index = attrs['wx:for-index'] || 'index'
   const originalValue = removeParentheses(attrs['wx:for'])
   attrs['v-for'] = `(${item}, ${index}) in (${originalValue})`
-  
+
   const key = attrs['wx:key'] || 'id'
   const bindKey = key === '*this' ? 'item' : `${attrs.__item__}.${key}`
   attrs['v-bind:key'] = bindKey
@@ -72,4 +75,21 @@ function transformFor(node) {
   Reflect.deleteProperty(attrs, 'wx:for-index')
   Reflect.deleteProperty(attrs, 'wx:key')
   node.attrs = attrs
+}
+
+function transformComputeValue(node) {
+  let attrs = { ...node.attrs }
+  node.attrs = Object.keys(attrs).reduce((previous, current) => {
+    let key = current;
+    let value = attrs[key];
+    if (!COMP_VAL_REG.test(value)) return previous;
+
+    value = removeParentheses(value)
+    if (!key.startsWith('v-')) {
+      key = `v-bind:${key}`
+    }
+
+    previous[key] = value;
+    return previous;
+  }, {})
 }
