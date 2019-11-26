@@ -1,6 +1,6 @@
 {
   "name": "@rmini/cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "build miniprogram use rmini",
   "keywords": [
     "miniprogram",
@@ -24,8 +24,8 @@
     "registry": "https://registry.npm.taobao.org/"
   },
   "dependencies": {
-    "@rmini/bundlejs": "^0.0.4",
-    "@rmini/posthtml-rmini-wxml": "^0.0.3",
+    "@rmini/bundlejs": "^0.0.5",
+    "@rmini/posthtml-rmini-wxml": "^0.0.4",
     "bluebird": "^3.7.1",
     "compressing": "^1.4.0",
     "css": "^2.2.4",
