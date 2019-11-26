@@ -3,6 +3,9 @@
     "packages/*"
   ],
   "version": "independent",
+  "publishConfig": {
+    "access": "public"
+  },
   "command": {
     "publish": {
       "message": "chore(release): publish"
