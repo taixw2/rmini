@@ -381,7 +381,7 @@ const $$api = [
 ];
 
 $$api.reduce((previous, current) => {
-  const hanler = /[Ss]ync$/.test(current) ? jsBridge.invoke : jsBridge.on;
+  const hanler = /[Ss]ync$/.test(current) ? runtime.jsBridge.invoke : runtime.jsBridge.on;
   return (previous[current] = function(payload) {
     hanler.call(jsBridge, current, { payload, session: $$createId() });
   });
