@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@rmini/bundlejs": "^0.0.5",
-    "@rmini/posthtml-rmini-wxml": "^0.0.4",
+    "@rmini/posthtml-rmini-wxml": "^0.0.5-alpha.0",
     "bluebird": "^3.7.1",
     "compressing": "^1.4.0",
     "css": "^2.2.4",
