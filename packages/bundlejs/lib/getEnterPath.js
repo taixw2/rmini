@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const temp = require('temp');
-const getAppConfig = require('getAppConfig');
+const getAppConfig = require('./getAppConfig');
 
 module.exports = function getEnterPath(appPath) {
   const appConfig = getAppConfig(appPath);
@@ -13,6 +13,6 @@ module.exports = function getEnterPath(appPath) {
   }
 
   fs.writeFileSync(fd, appConfig.pages.map(importStmt).join(';\n'));
-  fs.close(fd);
+  fs.close(fd, () => null);
   return tempPath;
 };

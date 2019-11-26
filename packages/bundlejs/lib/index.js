@@ -7,6 +7,7 @@ const resolve = require('rollup-plugin-node-resolve');
 const commonjs = require('rollup-plugin-commonjs');
 const injectPagePath = require('./rollup-plugin-inject-page-path');
 const getEnterPath = require('./getEnterPath');
+const getAppConfig = require('./getAppConfig');
 
 module.exports = bundlejs;
 
@@ -21,12 +22,12 @@ async function bundlejs(appPath, outputPath) {
     plugins,
   });
 
-  const polyfillContent = await polyfillBundle.generate();
+  const polyfillContent = await polyfillBundle.generate({ format: 'es' });
   const polyfillCode = polyfillContent.output[0].code;
 
   const appBundle = await rollup({ input: enterPath, plugins: [ ...plugins, injectPagePath() ] });
   await appBundle.write({
-    intro: polyfill.replace(/\/\*\*\/.*?\/\*\*\//, JSON.stringify(appConfig)),
+    intro: polyfillCode.replace(/\/\*\*\/.*?\/\*\*\//, JSON.stringify(appConfig)),
     file: outputPath,
     format: 'es',
   });
