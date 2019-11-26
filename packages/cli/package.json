@@ -24,6 +24,8 @@
     "registry": "https://registry.npm.taobao.org/"
   },
   "dependencies": {
+    "@rmini/bundlejs": "^0.0.4",
+    "@rmini/posthtml-rmini-wxml": "^0.0.3",
     "bluebird": "^3.7.1",
     "compressing": "^1.4.0",
     "css": "^2.2.4",

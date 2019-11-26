@@ -9,6 +9,7 @@ const temp = require('temp');
 const os = require('os');
 const css = require('css');
 const cp = require('child_process');
+const bundlejs = require('@rmini/bundlejs');
 const pify = require('./pify');
 
 const rdFile = pify(fs.readFile, fs);
@@ -45,6 +46,8 @@ async function setup() {
   });
 
   await Promise.all(tasks);
+
+  await bundlejs(projectPath, path.join(dirPath, 'main.js'));
   await compressing.zip.compressDir(dirPath, path.join(os.tmpdir(), 'rminiprogram.zip'));
   // TODO： 这里应该上传到服务器然后删除 tempdir
   if (os.platform() === 'darwin') {
