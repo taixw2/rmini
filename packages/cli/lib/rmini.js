@@ -1,57 +1,51 @@
 #!/usr/bin/env node
 
-'use strict';
-const path = require('path');
-const fs = require('fs');
-const compressing = require('compressing');
-const posthtml = require('posthtml');
-const temp = require('temp');
-const os = require('os');
-const css = require('css');
-const cp = require('child_process');
-const bundlejs = require('@rmini/bundlejs');
-const pify = require('./pify');
-
-const rdFile = pify(fs.readFile, fs);
-const wtFile = pify(fs.writeFile, fs);
-const existFs = pify(fs.exists, fs, (resolve) => (existed) => resolve(existed));
+"use strict";
+const path = require("path");
+const compressing = require("compressing");
+const os = require("os");
+const cp = require("child_process");
+const fsify = require("./pify").fsify;
+const combinHTML = require("./combinHTML");
+const bundlejs = require("@rmini/bundlejs");
 
 async function setup() {
-  const projectPath = process.cwd();
-  const appConfigPath = path.join(projectPath, 'app.json');
+  const projectDirPath = process.cwd();
+  const tempMiniprogramDirPath = path.join(os.tmpdir(), "mock_appid");
 
-  temp.track(true);
-
-  const dirPath = await temp.mkdir('rmini');
-  const tpl = await rdFile(require.resolve('./template.html'));
-  const APPJSON = require(require.resolve(appConfigPath));
-  const tasks = APPJSON.pages.map(async (pagePath) => {
-    const wxmlPath = path.join(projectPath, pagePath + '.wxml');
-    const wxssPath = path.join(projectPath, pagePath + '.wxss');
-    const targetPath = path.join(dirPath, pagePath.split('/').join('_'));
-
-    const wxmlContent = await rdFile(wxmlPath);
-    const wxssExist = await existFs(wxssPath);
-    let wxssContent = '';
-    if (wxssExist) {
-      wxssContent = await rdFile(wxssPath);
+  try {
+    // 创建一个临时目录，目录名可以使用 appId
+    if (await fsify.exists(tempMiniprogramDirPath)) {
+      await fsify.rmDir(tempMiniprogramDirPath, { recursive: true });
     }
-    if (wxssContent) {
-      css.parse(wxssContent);
+    await fsify.mkdir(tempMiniprogramDirPath);
+
+    // app.json 路径
+    const appConfig = require(path.join(projectDirPath, "app.json"));
+    const tasks = appConfig.pages.map(async (pagePath) => {
+      const htmlContent = await combinHTML(pagePath, projectDirPath);
+      // 写入到指定文件
+      return fsify.writeFile(
+        path.join(tempMiniprogramDirPath, pagePath.split("/").join("_")) + ".html",
+        htmlContent,
+      );
+    });
+
+    // 编译HTML 和 javascript
+    await Promise.all([
+      Promise.all(tasks),
+      bundlejs(projectDirPath, path.join(tempMiniprogramDirPath, "main.js")),
+    ]);
+
+    // 打包成 zip
+    await compressing.zip.compressDir(tempMiniprogramDirPath, path.join(os.tmpdir(), "rminiprogram.zip"));
+    // TODO：调试
+    if (os.platform() === "darwin") {
+      cp.exec(`serve ${os.tmpdir()}`);
+      console.log("TCL: setup -> os.tmpdir()", os.tmpdir());
     }
-
-    const postWXML = await posthtml([ require('@rmini/posthtml-rmini-wxml') ]).process(wxmlContent);
-    const pageHTML = tpl.replace('<!-- inject wxml -->', postWXML.html).replace('/* inject wxss */', wxssContent);
-    return wtFile(targetPath, pageHTML);
-  });
-
-  await Promise.all(tasks);
-
-  await bundlejs(projectPath, path.join(dirPath, 'main.js'));
-  await compressing.zip.compressDir(dirPath, path.join(os.tmpdir(), 'rminiprogram.zip'));
-  // TODO： 这里应该上传到服务器然后删除 tempdir
-  if (os.platform() === 'darwin') {
-    cp.exec(`open ${os.tmpdir()}`);
+  } catch (error) {
+    console.error(error);
   }
 }
 
