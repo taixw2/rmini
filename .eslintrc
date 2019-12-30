@@ -17,7 +17,10 @@
     "eslint:recommended"
   ],
   "rules": {
-    "no-constant-condition": 0
+    "no-constant-condition": 0,
+    "no-console": [1, {
+      "allow": ["error"]
+    }]
     // "no-unused-vars": 1,
     // "react/prop-types": 0,
   }
