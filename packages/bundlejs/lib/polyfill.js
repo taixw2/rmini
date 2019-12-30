@@ -1,15 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 
-import wx from "./api";
-
-let $$appConfig = /*appconfig*/ {} /**/;
-let $$projectConfig = /*projectconfig*/ {} /**/;
-
-function $$setData(data) {
-  this.data = data;
-  jsBridge.postMessage(this.__path, $$projectConfig.appid, { data });
-}
+import { $$appConfig, $$projectConfig } from "./api";
 
 const $$util = {
   parsePath(path = "") {
@@ -23,7 +15,7 @@ const $$util = {
       }, {});
     }
     return {
-      path: "/" + domain,
+      path: domain.startsWith("/") ? domain : `/${domain}`,
       option,
     };
   },
@@ -64,17 +56,19 @@ const $$private = {
     return this.routeStacks[this.routeStacks.length - 1];
   },
 
-  getInitData(path) {
-    const pathInfo = $$util.parsePath(path);
-    return this.bundle.pages[pathInfo.path].data;
+  getRoute(webviewId) {
+    return this.routeStacks.find((v) => v.instance.webviewId === webviewId);
   },
 
-  pushRoute(webviewId, path = $$appConfig.pages[0]) {
-    const pathInfo = $$util.parsePath(path);
+  getInitData(webviewId) {
+    return this.getRoute(webviewId).instance.data;
+  },
+
+  pushRoute(webviewId, path) {
+    const pathInfo = $$util.parsePath(path ? path : $$appConfig.pages[0]);
     const PageClass = this.bundle.pages[pathInfo.path];
 
-    pathInfo.webviewId = webviewId;
-    pathInfo.instance = new PageClass();
+    pathInfo.instance = new PageClass(webviewId);
     this.routeStacks.push(pathInfo);
   },
 
@@ -83,13 +77,12 @@ const $$private = {
   },
 
   callLifecycle(webviewId, lifecycle) {
-    const pageInfo = this.routeStacks.find((v) => v.webviewId === webviewId);
-    pageInfo.instance[lifecycle](pageInfo.option);
+    const pageInfo = this.getRoute(webviewId);
+    return pageInfo.instance[lifecycle](pageInfo.option);
   },
 
   callMethod(webviewId, event) {
-    const pageInfo = this.routeStacks.find((v) => v.webviewId === webviewId);
-    pageInfo.instance[event.eventHandler](event.event);
+    return this.getRoute(webviewId).instance[event.eventHandler](event.event);
   },
 };
 
@@ -102,19 +95,25 @@ function App(option) {
 }
 
 function Page(option) {
-  $$private.bundle.pages[Page.__path__].__path = Page.__path__;
-
   const pageOption = Object.assign({}, $$private.lifecycle, option);
-
+  const lifecycleKey = Object.keys($$private.lifecycle);
   $$private.bundle.pages[Page.__path__] = class PageController {
-    static __path = Page.__path__;
+    constructor(webviewId) {
+      this.webviewId = webviewId;
+      this.data = { ...option.data };
 
-    data = { ...option.data };
+      // 把其余方法&属性挂在 `this` 上
+      Object.keys(option).forEach((key) => {
+        if (lifecycleKey.includes(key)) return;
+        this[key] = option[key];
+      });
+    }
 
     setData(data) {
       this.data = { ...this.data, ...data };
-      jsBridge.postMessage(this.__path, $$projectConfig.appid, { data: this.data });
+      jsBridge.setData(this.webviewId, $$projectConfig.appid, this.data);
     }
+
     onLoad(option) {
       pageOption.onLoad.call(this, option);
     }
@@ -149,4 +148,6 @@ function Page(option) {
       pageOption.onTabItemTap.call(this);
     }
   };
+
+  // $$private.bundle.pages[Page.__path__].__path = __path__;
 }

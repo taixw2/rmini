@@ -1,7 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 // jsBridge.invoke. jsBridge.on
 
 const wx = {};
+
+export let $$appConfig = /*appconfig*/ {} /**/;
+export let $$projectConfig = /*projectconfig*/ {} /**/;
 
 const $$createId = () => Math.floor(Math.random() * 10000000);
 
