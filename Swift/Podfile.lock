@@ -1,0 +1,24 @@
+PODS:
+  - PKHUD (5.3.0)
+  - SDDownloadManager (1.1.0)
+  - SSZipArchive (2.2.2)
+
+DEPENDENCIES:
+  - PKHUD (~> 5.0)
+  - SDDownloadManager
+  - SSZipArchive
+
+SPEC REPOS:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - PKHUD
+    - SDDownloadManager
+    - SSZipArchive
+
+SPEC CHECKSUMS:
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+  SDDownloadManager: 62a9339c03ea27606effefd9aa1800e4127e3a52
+  SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
+
+PODFILE CHECKSUM: 20b1d1f621fe53809f9b3bd52a5d9aac599999a9
+
+COCOAPODS: 1.8.4
