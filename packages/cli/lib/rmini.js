@@ -11,7 +11,8 @@ const bundlejs = require("@rmini/bundlejs");
 
 async function setup() {
   const projectDirPath = process.cwd();
-  const tempMiniprogramDirPath = path.join(os.tmpdir(), "mock_appid");
+  const projectConfig = require(path.join(projectDirPath, "project.config.json"));
+  const tempMiniprogramDirPath = path.join(os.tmpdir(), projectConfig.appid);
 
   try {
     // 创建一个临时目录，目录名可以使用 appId
@@ -22,6 +23,7 @@ async function setup() {
 
     // app.json 路径
     const appConfig = require(path.join(projectDirPath, "app.json"));
+
     const tasks = appConfig.pages.map(async (pagePath) => {
       const htmlContent = await combinHTML(pagePath, projectDirPath);
       // 写入到指定文件
@@ -41,7 +43,7 @@ async function setup() {
     await compressing.zip.compressDir(tempMiniprogramDirPath, path.join(os.tmpdir(), "rminiprogram.zip"));
     // TODO：调试
     if (os.platform() === "darwin") {
-      cp.exec(`serve ${os.tmpdir()}`);
+      cp.exec(`serve -p 3838 ${os.tmpdir()}`);
       console.log("TCL: setup -> os.tmpdir()", os.tmpdir());
     }
   } catch (error) {
