@@ -26,7 +26,7 @@
     "url": "git+https://github.com/taixw2/rmini.git"
   },
   "scripts": {
-    "start": "serve .",
+    "start": "serve . -p 9990",
     "watch": "rollup -c -w",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },

@@ -1,7 +1,8 @@
-import './components/scroll-view'
-import './components/view'
-import './components/text'
-import './components/input'
+import "./components/scroll-view";
+import "./components/view";
+import "./components/text";
+import "./components/input";
+import "./components/button";
 // import { LitElement, html } from 'lit-element';
 
 // // Extend the LitElement base class
