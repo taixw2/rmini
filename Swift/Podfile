@@ -1,0 +1,22 @@
+# Uncomment the next line to define a global platform for your project
+source 'https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git'
+platform :ios, '10.0'
+use_frameworks!
+
+target 'MiniprogramExample' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  pod 'SDDownloadManager'
+  pod 'PKHUD', '~> 5.0'
+  pod 'SSZipArchive'
+  # Pods for MiniprogramExample
+
+#  target 'MiniprogramExampleTests' do
+#    inherit! :search_paths
+#    # Pods for testing
+#  end
+#
+#  target 'MiniprogramExampleUITests' do
+#    # Pods for testing
+#  end
+
+end

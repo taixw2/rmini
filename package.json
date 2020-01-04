@@ -1,0 +1,26 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.7.4",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-angular": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
+    "babel-preset-env": "^1.5.2",
+    "eslint": "^4.1.0",
+    "eslint-config-prettier": "^2.2.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "husky": "^3.0.9",
+    "lerna": "^3.16.5",
+    "prettier": "^1.4.4"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
