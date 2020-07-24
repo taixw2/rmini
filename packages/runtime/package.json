@@ -23,7 +23,11 @@
     "g": "npm run generate"
   },
   "devDependencies": {
-    "@stencil/core": "^1.12.2"
+    "@stencil/core": "^1.12.2",
+    "@stencil/postcss": "^1.0.1",
+    "postcss-css-variables": "^0.17.0",
+    "postcss-hexrgba": "^2.0.1",
+    "postcss-pxtorem": "^5.1.1"
   },
   "license": "MIT",
   "dependencies": {

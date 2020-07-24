@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Host, h } from '@stencil/core';
+import { Component, ComponentInterface, Host, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'wx-input',
@@ -7,10 +7,12 @@ import { Component, ComponentInterface, Host, h } from '@stencil/core';
 })
 export class WxInput implements ComponentInterface {
 
+  @Prop() value: string
+
   render() {
     return (
       <Host>
-        <slot></slot>
+        <input value={this.value} />
       </Host>
     );
   }
