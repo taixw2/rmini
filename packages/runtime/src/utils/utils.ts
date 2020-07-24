@@ -20,6 +20,7 @@ export function eventToNative(bindFunctionName, payload) {
   webkit.messageHandlers.triggerEvent.postMessage(
     JSON.stringify({
       method: bindFunctionName,
+      webviewId: Reflect.get(window, "__webviewId"),
       payload
     })
   );
