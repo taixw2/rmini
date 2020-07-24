@@ -1,3 +1,61 @@
 :host {
+  width: 320px;
+  height: 240px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
   display: block;
+  overflow: hidden;
+}
+
+.scaleToFill {
+  object-fit: fill;
+}
+
+.aspectFit {
+  object-fit: contain;
+}
+
+.aspectFill {
+  object-fit: cover;
+}
+
+.center {
+  object-position: center;
+}
+
+.top {
+  object-position: center top;
+}
+
+.bottom {
+  object-position: center bottom;
+}
+
+.left {
+  object-position: left center;
+}
+
+.right {
+  object-position: right center;
+}
+
+.topLeft {
+  object-position: left top;
+}
+
+.topRight {
+  object-position: right top;
+}
+
+.bottomLeft {
+  object-position: left bottom;
+}
+
+.bottomRight {
+  object-position: right bottom;
 }
