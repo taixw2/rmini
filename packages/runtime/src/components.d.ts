@@ -6,6 +6,22 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface BaseComponent {
+        "bindLongpress": string;
+        "bindLongtap": string;
+        "bindTap": string;
+        "bindTouchcancel": string;
+        "bindTouchend": string;
+        "bindTouchmove": string;
+        "bindTouchstart": string;
+        "catchLongpress": string;
+        "catchLongtap": string;
+        "catchTap": string;
+        "catchTouchcancel": string;
+        "catchTouchend": string;
+        "catchTouchmove": string;
+        "catchTouchstart": string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -20,19 +36,166 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface WxButton {
+        "bindLongpress": string;
+        "bindLongtap": string;
+        "bindTap": string;
+        "bindTouchcancel": string;
+        "bindTouchend": string;
+        "bindTouchmove": string;
+        "bindTouchstart": string;
+        "catchLongpress": string;
+        "catchLongtap": string;
+        "catchTap": string;
+        "catchTouchcancel": string;
+        "catchTouchend": string;
+        "catchTouchmove": string;
+        "catchTouchstart": string;
+        /**
+          * 是否禁用
+         */
+        "disabled": boolean;
+        /**
+          * 名称前是否带 loading 图标
+         */
+        "loading": boolean;
+        /**
+          * 按钮是否镂空，背景色透明
+         */
+        "plain": boolean;
+        /**
+          * 按钮的大小
+         */
+        "size": "default" | "mini";
+        /**
+          * 按钮的样式类型
+         */
+        "type": "default" | "primary" | "warn";
+    }
+    interface WxImage {
+        "bindLongpress": string;
+        "bindLongtap": string;
+        "bindTap": string;
+        "bindTouchcancel": string;
+        "bindTouchend": string;
+        "bindTouchmove": string;
+        "bindTouchstart": string;
+        "catchLongpress": string;
+        "catchLongtap": string;
+        "catchTap": string;
+        "catchTouchcancel": string;
+        "catchTouchend": string;
+        "catchTouchmove": string;
+        "catchTouchstart": string;
+        "mode": "scaleToFill" | "aspectFit" | "aspectFill" | "top" | "bottom" | "left" | "center" | "right" | "topLeft" | "topRight" | "bottomLeft" | "bottomRight";
+        "src": string;
+    }
+    interface WxInput {
+        "value": string;
+    }
+    interface WxText {
+        "bindLongpress": string;
+        "bindLongtap": string;
+        "bindTap": string;
+        "bindTouchcancel": string;
+        "bindTouchend": string;
+        "bindTouchmove": string;
+        "bindTouchstart": string;
+        "catchLongpress": string;
+        "catchLongtap": string;
+        "catchTap": string;
+        "catchTouchcancel": string;
+        "catchTouchend": string;
+        "catchTouchmove": string;
+        "catchTouchstart": string;
+    }
+    interface WxView {
+        "bindLongpress": string;
+        "bindLongtap": string;
+        "bindTap": string;
+        "bindTouchcancel": string;
+        "bindTouchend": string;
+        "bindTouchmove": string;
+        "bindTouchstart": string;
+        "catchLongpress": string;
+        "catchLongtap": string;
+        "catchTap": string;
+        "catchTouchcancel": string;
+        "catchTouchend": string;
+        "catchTouchmove": string;
+        "catchTouchstart": string;
+    }
 }
 declare global {
+    interface HTMLBaseComponentElement extends Components.BaseComponent, HTMLStencilElement {
+    }
+    var HTMLBaseComponentElement: {
+        prototype: HTMLBaseComponentElement;
+        new (): HTMLBaseComponentElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLWxButtonElement extends Components.WxButton, HTMLStencilElement {
+    }
+    var HTMLWxButtonElement: {
+        prototype: HTMLWxButtonElement;
+        new (): HTMLWxButtonElement;
+    };
+    interface HTMLWxImageElement extends Components.WxImage, HTMLStencilElement {
+    }
+    var HTMLWxImageElement: {
+        prototype: HTMLWxImageElement;
+        new (): HTMLWxImageElement;
+    };
+    interface HTMLWxInputElement extends Components.WxInput, HTMLStencilElement {
+    }
+    var HTMLWxInputElement: {
+        prototype: HTMLWxInputElement;
+        new (): HTMLWxInputElement;
+    };
+    interface HTMLWxTextElement extends Components.WxText, HTMLStencilElement {
+    }
+    var HTMLWxTextElement: {
+        prototype: HTMLWxTextElement;
+        new (): HTMLWxTextElement;
+    };
+    interface HTMLWxViewElement extends Components.WxView, HTMLStencilElement {
+    }
+    var HTMLWxViewElement: {
+        prototype: HTMLWxViewElement;
+        new (): HTMLWxViewElement;
+    };
     interface HTMLElementTagNameMap {
+        "base-component": HTMLBaseComponentElement;
         "my-component": HTMLMyComponentElement;
+        "wx-button": HTMLWxButtonElement;
+        "wx-image": HTMLWxImageElement;
+        "wx-input": HTMLWxInputElement;
+        "wx-text": HTMLWxTextElement;
+        "wx-view": HTMLWxViewElement;
     }
 }
 declare namespace LocalJSX {
+    interface BaseComponent {
+        "bindLongpress"?: string;
+        "bindLongtap"?: string;
+        "bindTap"?: string;
+        "bindTouchcancel"?: string;
+        "bindTouchend"?: string;
+        "bindTouchmove"?: string;
+        "bindTouchstart"?: string;
+        "catchLongpress"?: string;
+        "catchLongtap"?: string;
+        "catchTap"?: string;
+        "catchTouchcancel"?: string;
+        "catchTouchend"?: string;
+        "catchTouchmove"?: string;
+        "catchTouchstart"?: string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -47,15 +210,116 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface WxButton {
+        "bindLongpress"?: string;
+        "bindLongtap"?: string;
+        "bindTap"?: string;
+        "bindTouchcancel"?: string;
+        "bindTouchend"?: string;
+        "bindTouchmove"?: string;
+        "bindTouchstart"?: string;
+        "catchLongpress"?: string;
+        "catchLongtap"?: string;
+        "catchTap"?: string;
+        "catchTouchcancel"?: string;
+        "catchTouchend"?: string;
+        "catchTouchmove"?: string;
+        "catchTouchstart"?: string;
+        /**
+          * 是否禁用
+         */
+        "disabled"?: boolean;
+        /**
+          * 名称前是否带 loading 图标
+         */
+        "loading"?: boolean;
+        /**
+          * 按钮是否镂空，背景色透明
+         */
+        "plain"?: boolean;
+        /**
+          * 按钮的大小
+         */
+        "size"?: "default" | "mini";
+        /**
+          * 按钮的样式类型
+         */
+        "type"?: "default" | "primary" | "warn";
+    }
+    interface WxImage {
+        "bindLongpress"?: string;
+        "bindLongtap"?: string;
+        "bindTap"?: string;
+        "bindTouchcancel"?: string;
+        "bindTouchend"?: string;
+        "bindTouchmove"?: string;
+        "bindTouchstart"?: string;
+        "catchLongpress"?: string;
+        "catchLongtap"?: string;
+        "catchTap"?: string;
+        "catchTouchcancel"?: string;
+        "catchTouchend"?: string;
+        "catchTouchmove"?: string;
+        "catchTouchstart"?: string;
+        "mode"?: "scaleToFill" | "aspectFit" | "aspectFill" | "top" | "bottom" | "left" | "center" | "right" | "topLeft" | "topRight" | "bottomLeft" | "bottomRight";
+        "src"?: string;
+    }
+    interface WxInput {
+        "value"?: string;
+    }
+    interface WxText {
+        "bindLongpress"?: string;
+        "bindLongtap"?: string;
+        "bindTap"?: string;
+        "bindTouchcancel"?: string;
+        "bindTouchend"?: string;
+        "bindTouchmove"?: string;
+        "bindTouchstart"?: string;
+        "catchLongpress"?: string;
+        "catchLongtap"?: string;
+        "catchTap"?: string;
+        "catchTouchcancel"?: string;
+        "catchTouchend"?: string;
+        "catchTouchmove"?: string;
+        "catchTouchstart"?: string;
+    }
+    interface WxView {
+        "bindLongpress"?: string;
+        "bindLongtap"?: string;
+        "bindTap"?: string;
+        "bindTouchcancel"?: string;
+        "bindTouchend"?: string;
+        "bindTouchmove"?: string;
+        "bindTouchstart"?: string;
+        "catchLongpress"?: string;
+        "catchLongtap"?: string;
+        "catchTap"?: string;
+        "catchTouchcancel"?: string;
+        "catchTouchend"?: string;
+        "catchTouchmove"?: string;
+        "catchTouchstart"?: string;
+    }
     interface IntrinsicElements {
+        "base-component": BaseComponent;
         "my-component": MyComponent;
+        "wx-button": WxButton;
+        "wx-image": WxImage;
+        "wx-input": WxInput;
+        "wx-text": WxText;
+        "wx-view": WxView;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "base-component": LocalJSX.BaseComponent & JSXBase.HTMLAttributes<HTMLBaseComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "wx-button": LocalJSX.WxButton & JSXBase.HTMLAttributes<HTMLWxButtonElement>;
+            "wx-image": LocalJSX.WxImage & JSXBase.HTMLAttributes<HTMLWxImageElement>;
+            "wx-input": LocalJSX.WxInput & JSXBase.HTMLAttributes<HTMLWxInputElement>;
+            "wx-text": LocalJSX.WxText & JSXBase.HTMLAttributes<HTMLWxTextElement>;
+            "wx-view": LocalJSX.WxView & JSXBase.HTMLAttributes<HTMLWxViewElement>;
         }
     }
 }
