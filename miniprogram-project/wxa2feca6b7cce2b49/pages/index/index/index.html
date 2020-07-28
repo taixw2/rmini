@@ -1,0 +1,73 @@
+
+  <!DOCTYPE html>
+  <html lang="en" style="font-size: __FONT_SIZE__px">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>/**index.wxss**/
+
+.userinfo,.button-groups {
+  display: flex;
+  align-items: center;
+}
+
+.userinfo {
+  flex-direction: column;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 2rem;
+}
+
+.button-groups {
+  justify-content: center;
+}
+
+.button-groups wx-button {
+  margin: 0 10rpx;
+}
+</style>
+<script src="/Documents/library/librarys/runtime-v2.0.4.js"></script>
+
+  </head>
+  <body>
+    <div id="app">
+  <!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <block>
+      <image bindtap="bindViewTap" class="userinfo-avatar" mode="cover" v-bind:src="'今天' + userInfo.avatarUrl + '你好' + userInfo.nickName + 'a'"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  
+  <view class="button-groups">
+    <button bindtap="add">添加</button>
+    <button bindtap="reduce">减少</button>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+</view>
+
+    </div>
+  </body>
+  <script type="text/javascript">
+  __Def("userInfo", {"nickName":{}});
+__Def("count", {});
+__Def("motto", {});
+    </script>
+  </html>
+  

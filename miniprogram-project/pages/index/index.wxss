@@ -1,0 +1,34 @@
+/**index.wxss**/
+
+.userinfo,
+.button-groups {
+  display: flex;
+  align-items: center;
+}
+
+.userinfo {
+  flex-direction: column;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.button-groups {
+  justify-content: center;
+}
+
+.button-groups button {
+  margin: 0 10rpx;
+}

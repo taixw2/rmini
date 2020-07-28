@@ -1,0 +1,36 @@
+
+  <!DOCTYPE html>
+  <html lang="en" style="font-size: __FONT_SIZE__px">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>.log-list {
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx;
+}
+.log-item {
+  margin: 10rpx;
+}
+</style>
+<script src="/Documents/library/librarys/runtime-v2.0.4.js"></script>
+
+  </head>
+  <body>
+    <div id="app">
+  <!--logs.wxml-->
+<view class="container log-list">
+  <block wx:for="{{logs}}" wx:for-item="log">
+    <text class="log-item">{{index + 1}}. {{log}}</text>
+  </block>
+</view>
+
+    </div>
+  </body>
+  <script type="text/javascript">
+  __Def("logs", {});
+__Def("log", {});
+    </script>
+  </html>
+  
