@@ -20,6 +20,7 @@ export const config: Config = {
       ]
     })
   ],
+  globalScript: './src/global/script.ts',
   outputTargets: [
     {
       type: "dist",
