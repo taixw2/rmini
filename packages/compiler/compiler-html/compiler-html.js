@@ -86,7 +86,11 @@ function compilerAttributeValue(attributes) {
 function postwxml(htmlTree) {
   builtInComponents.forEach((componentName) => {
     htmlTree.match({ tag: componentName }, (matchNode) => {
-      if (!matchNode.attrs) return;
+      if (matchNode.tag !== "block") {
+        matchNode.tag = "wx-" + matchNode.tag;
+      }
+
+      if (!matchNode.attrs) return matchNode;
       compilerAttributeName(matchNode.attrs);
       compilerAttributeValue(matchNode.attrs);
       // TODO: 事件
@@ -97,5 +101,7 @@ function postwxml(htmlTree) {
 
 exports.compilerHtml = async function(wxmlContent) {
   const { html } = await posthtml([postwxml]).process(wxmlContent);
+
+  // TODO: 用 Vue Template Compiler 编译成 render 函数
   return html;
 };

@@ -31,7 +31,11 @@ const template = {
 };
 
 exports.compilerHtml = function(entryDir, appConfig, projectConfig) {
-  appConfig.pages?.forEach(async (pageEntry) => {
+  if (!appConfig.pages || !appConfig.pages.length) {
+    throw new Error('no page fount')
+  }
+
+  appConfig.pages.forEach(async (pageEntry) => {
     const wxmlPath = path.join(cwd, pageEntry + ".wxml");
     fs.accessSync(wxmlPath);
 
@@ -43,7 +47,7 @@ exports.compilerHtml = function(entryDir, appConfig, projectConfig) {
     let content = "";
     content += template.head;
     content += `<style>${styleContent}</style>\n`;
-    content += `<script src="/Documents/library/librarys/runtime-v${projectConfig.libVersion}.js"></script>\n`;
+    content += `<script src="https://unpkg.com/@rmini/runtime@${projectConfig.libVersion}"></script>\n`;
     content += template.body;
     content += wxmlContent;
     content += template.foot;
