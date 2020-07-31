@@ -81,11 +81,13 @@ function popRouter() {
 
 /**
  * webview 中所有资源都准备好了
+ * 并且已经实例化了 webview
  * 准备开始渲染
+ * @param {{ webviewId: string }} option
  */
-function init() {
+function init(option) {
   callAppLifecycle({ lifecycle: "onLaunch" });
   //   设置当前 appConfig.pages[0] 作为当前进栈的路由
   const config = store.getAppConfig();
-  jsbridge.invoke("launch", false, "", { url: config.pages[0] });
+  jsbridge.invoke("launch", false, option.webviewId, { url: config.pages[0] });
 }

@@ -23,12 +23,13 @@ class MiniprogramShareController {
     }
     
     func launchApp(appId: String) {
-        currentAppId = appId
-        guard let miniprogram = self.ref[appId] else {
-            ref[appId] = MiniprogramModal(appId: appId)
-            ref[appId]?.launchApp()
-            return
-        };
-        miniprogram.launchApp()
+        currentAppId = appId        
+        if let miniprogram = self.ref[appId] {
+            miniprogram.launchApp()
+        }
+
+        // TODO: 如果已经运行超过额定数量了，则清空一部分长期未运行的
+        ref[appId] = MiniprogramModal(appId: appId)
+        ref[appId]!.launchApp()
     }
 }

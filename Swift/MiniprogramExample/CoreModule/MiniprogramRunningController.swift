@@ -45,7 +45,6 @@ class MiniprogramRunningController {
     func run(_ appId: String, _ pkgURL: URL) {
         self.appId = appId
         
-        // 通过某种手段用 appId 换取下载地址
         download(pkgURL) { (err, localURL) in
             if err != nil {
                 HUD.flash(.label("下载小程序失败"), delay: 2.0)
@@ -67,36 +66,33 @@ class MiniprogramRunningController {
             fs.unlink(file: self.appDir, error: &err)
             fs.mkDir(path: self.appDir, error: &err)
             // 构建&移动到正式目录
-            guard let fileList = fs.readDir(path: self.tempAppDir, error: &err) else {
+            guard let fileList = fs.readDir(path: self.tempAppDir, recursive: true, error: &err) else {
                 HUD.flash(.label("解析小程序异常"), delay: 2.0)
                 logger.error(err?.localizedDescription ?? "解析小程序异常")
                 return
             }
             
             var buildError: Error? = nil;
-            print(fileList)
-            for fileName in fileList {
-                let filePath = self.tempAppDir.appending("/").appending(fileName);
-                if fileName.hasSuffix(".js") {
-                    // TODO: 移动到指定目录
-                    fs.mv(at: filePath, to: self.appDir.appending("/").appending(fileName), error: &buildError)
+            for filePath in fileList {
+                let fileNameIndex = filePath.index(filePath.startIndex, offsetBy: self.tempAppDir.count)
+                let fileName = filePath.suffix(from: fileNameIndex)
+                
+                if filePath.hasSuffix(".js") {
+                    // 移动到指定目录
+                    fs.mv(at: filePath, to: self.appDir.appending(fileName), error: &buildError)
                     continue;
                 }
-                
+
                 var fileContent = try! String(contentsOfFile: filePath);
-                // 匹配出所有的 rpx, 构建后移动到指定目录
-                let rpxs = fileContent.matches("[0-9]+(?:[.,][0-9]+)*rpx");
-                for rpxUnit in rpxs {
-                    let val = Float(rpxUnit.dropLast(3)) ?? 0;
-                    // 替换 rpx
-                    fileContent = fileContent.replacingOccurrences(of: rpxUnit, with: String(val / 750 * Float(System.screenWidth)) + "px");
-                    // 替换library
-                    fileContent = fileContent.replacingOccurrences(of: "<%VUE%>", with: AppConfig.libraryDir.appending("vue.js"))
-                    fileContent = fileContent.replacingOccurrences(of: "<%WEBCOMPONENT%>", with: AppConfig.libraryDir.appending("webcomponent.js"))
-                    fs.write(file: self.appDir.appending("/").appending(fileName), data: fileContent.data(using: .utf8)!, error: &buildError)
-                }
+                fileContent = fileContent.replacingOccurrences(of: "__SCALE__", with: String(Float(1) / Float(UIScreen.main.scale)))
+                fileContent = fileContent.replacingOccurrences(of: "__FONT_SIZE__", with: String(Float(100 / 2 * UIScreen.main.scale)))
+                fs.write(file: self.appDir.appending(fileName), data: fileContent.data(using: .utf8)!, error: &buildError)
             }
-            // 运行小程序
+            
+            if buildError != nil {
+                LoggerController.shared.error(buildError)
+            }
+//            // 运行小程序
             MiniprogramShareController.shared.launchApp(appId: appId)
         }
     }

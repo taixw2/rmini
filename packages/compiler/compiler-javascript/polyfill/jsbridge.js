@@ -23,13 +23,13 @@ export const invoke = (method, sync, webviewId, option) => {
   const sessionId = createSessionId();
   keepCbs(sessionId, option);
 
-  return jsbridge()?.invoke({
+  return jsbridge()?.invoke(JSON.stringify({
     sessionId,
     sync,
     method,
     webviewId,
     payload: option,
-  });
+  }));
 };
 
 /**

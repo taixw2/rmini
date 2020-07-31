@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048E763F24D421950007D8DB /* JSContextModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E763E24D421950007D8DB /* JSContextModal.swift */; };
+		048E764224D42B030007D8DB /* JSInvokeNativeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E764124D42B030007D8DB /* JSInvokeNativeOption.swift */; };
+		04B636FC24D41EAE00AE3195 /* ReaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B636FB24D41EAE00AE3195 /* ReaderController.swift */; };
 		12C39BE66F7E5B6C3D86A94C /* Pods_MiniprogramExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2265B85D7C672ACF074AA593 /* Pods_MiniprogramExample.framework */; };
 		B813FC5523B4B0EE00558C5F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813FC5423B4B0EE00558C5F /* Dictionary.swift */; };
-		B813FC5823B4D1AF00558C5F /* JSConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813FC5723B4D1AF00558C5F /* JSConsole.swift */; };
 		B813FC5A23B4D23C00558C5F /* MiniprogramShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813FC5923B4D23C00558C5F /* MiniprogramShareController.swift */; };
 		B813FC5C23B4D54900558C5F /* JSBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813FC5B23B4D54900558C5F /* JSBridge.swift */; };
-		B83D2E0A23BA232F003A962C /* WechatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D2E0923BA232F003A962C /* WechatAPI.swift */; };
-		B83D2E0C23BA26D0003A962C /* JSValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D2E0B23BA26D0003A962C /* JSValueModel.swift */; };
 		B8583FA32397545700F80F95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FA22397545700F80F95 /* AppDelegate.swift */; };
 		B8583FA52397545700F80F95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FA42397545700F80F95 /* SceneDelegate.swift */; };
 		B8583FA72397545700F80F95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FA62397545700F80F95 /* ContentView.swift */; };
@@ -53,15 +53,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		048E763E24D421950007D8DB /* JSContextModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSContextModal.swift; sourceTree = "<group>"; };
+		048E764124D42B030007D8DB /* JSInvokeNativeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSInvokeNativeOption.swift; sourceTree = "<group>"; };
+		04B636FB24D41EAE00AE3195 /* ReaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderController.swift; sourceTree = "<group>"; };
 		2265B85D7C672ACF074AA593 /* Pods_MiniprogramExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniprogramExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90F2F4F61C19C2CEDE25803F /* Pods-MiniprogramExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniprogramExample.debug.xcconfig"; path = "Target Support Files/Pods-MiniprogramExample/Pods-MiniprogramExample.debug.xcconfig"; sourceTree = "<group>"; };
 		B3F409B3D43FB5AC6FE000AE /* Pods-MiniprogramExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniprogramExample.release.xcconfig"; path = "Target Support Files/Pods-MiniprogramExample/Pods-MiniprogramExample.release.xcconfig"; sourceTree = "<group>"; };
 		B813FC5423B4B0EE00558C5F /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
-		B813FC5723B4D1AF00558C5F /* JSConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSConsole.swift; sourceTree = "<group>"; };
 		B813FC5923B4D23C00558C5F /* MiniprogramShareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniprogramShareController.swift; sourceTree = "<group>"; };
 		B813FC5B23B4D54900558C5F /* JSBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSBridge.swift; sourceTree = "<group>"; };
-		B83D2E0923BA232F003A962C /* WechatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechatAPI.swift; sourceTree = "<group>"; };
-		B83D2E0B23BA26D0003A962C /* JSValueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSValueModel.swift; sourceTree = "<group>"; };
 		B8583F9F2397545700F80F95 /* MiniprogramExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniprogramExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8583FA22397545700F80F95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8583FA42397545700F80F95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +115,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		048E764024D42AC40007D8DB /* ObjectMapper */ = {
+			isa = PBXGroup;
+			children = (
+				048E764124D42B030007D8DB /* JSInvokeNativeOption.swift */,
+			);
+			path = ObjectMapper;
+			sourceTree = "<group>";
+		};
 		9C1477284BA83C67A99D3951 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,9 +135,7 @@
 		B813FC5623B4D19D00558C5F /* JSExport */ = {
 			isa = PBXGroup;
 			children = (
-				B813FC5723B4D1AF00558C5F /* JSConsole.swift */,
 				B813FC5B23B4D54900558C5F /* JSBridge.swift */,
-				B83D2E0923BA232F003A962C /* WechatAPI.swift */,
 			);
 			path = JSExport;
 			sourceTree = "<group>";
@@ -206,9 +212,10 @@
 		B8583FE22397CCD000F80F95 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				048E764024D42AC40007D8DB /* ObjectMapper */,
 				B8583FE92397CE9D00F80F95 /* MiniprogramModel.swift */,
 				B86E323F23B48C2300B133E7 /* WebViewModel.swift */,
-				B83D2E0B23BA26D0003A962C /* JSValueModel.swift */,
+				048E763E24D421950007D8DB /* JSContextModal.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -237,6 +244,7 @@
 			children = (
 				B86E322923B3042C00B133E7 /* FileSystemController.swift */,
 				B86E322B23B3090000B133E7 /* LoggerController.swift */,
+				04B636FB24D41EAE00AE3195 /* ReaderController.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -457,20 +465,20 @@
 				B8583FDF2397960500F80F95 /* WebViewController.swift in Sources */,
 				B86E322A23B3042C00B133E7 /* FileSystemController.swift in Sources */,
 				B86E322F23B30A0D00B133E7 /* Launch.swift in Sources */,
-				B83D2E0C23BA26D0003A962C /* JSValueModel.swift in Sources */,
 				B813FC5523B4B0EE00558C5F /* Dictionary.swift in Sources */,
 				B8583FA52397545700F80F95 /* SceneDelegate.swift in Sources */,
+				04B636FC24D41EAE00AE3195 /* ReaderController.swift in Sources */,
 				B86E323323B3142200B133E7 /* MiniprogramRunningController.swift in Sources */,
 				B86E323123B30A2300B133E7 /* Const.swift in Sources */,
 				B813FC5C23B4D54900558C5F /* JSBridge.swift in Sources */,
 				B86E322C23B3090000B133E7 /* LoggerController.swift in Sources */,
 				B8583FEA2397CE9D00F80F95 /* MiniprogramModel.swift in Sources */,
 				B813FC5A23B4D23C00558C5F /* MiniprogramShareController.swift in Sources */,
-				B83D2E0A23BA232F003A962C /* WechatAPI.swift in Sources */,
 				B8583FA72397545700F80F95 /* ContentView.swift in Sources */,
+				048E763F24D421950007D8DB /* JSContextModal.swift in Sources */,
 				B86E324023B48C2300B133E7 /* WebViewModel.swift in Sources */,
 				B86E322623B25B7E00B133E7 /* String.swift in Sources */,
-				B813FC5823B4D1AF00558C5F /* JSConsole.swift in Sources */,
+				048E764224D42B030007D8DB /* JSInvokeNativeOption.swift in Sources */,
 				B8583FD72397906800F80F95 /* JavascriptCoreController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

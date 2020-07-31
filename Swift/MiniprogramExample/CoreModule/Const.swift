@@ -26,4 +26,19 @@ enum AppConfig {
     static let tempMiniprogramDir = System.tempDirectory.appending("miniprogram/")
 }
 
+enum InvokeJSCoreType {
+//    * 1. 调用 Page 的生命周期
+    static let callPageLifecycle = 1
+    // * 2. 调用 App 的生命周期
+    static let callLifecycle = 2
+    // * 3. 调用回调函数
+    static let callCallback = 3
+    // * 4. 进入路由
+    static let callPushRouter = 4
+    // * 5. 退出路由
+    static let callPopRouter = 5
+    // * 6. 初始化 Page
+    static let callInitial = 6
+    
+}
 

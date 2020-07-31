@@ -41,7 +41,7 @@ exports.compilerPolyfill = (AppConfig, ProjectConfig) => {
    */
   const outputOptions = {
     format: "umd",
-    name: "__ployfill__",
+    name: "__polyfill__",
   };
 
   return rollup

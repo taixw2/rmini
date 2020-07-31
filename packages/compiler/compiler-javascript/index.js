@@ -79,7 +79,7 @@ function rollupCompiler(entry, plugins, polyfill) {
     .then((bundler) => {
       return bundler.generate({
         format: "iife",
-        intro: "const { getApp, wx, App, Page, global } = __polyfill",
+        intro: "const { getApp, wx, App, Page, global, console } = __polyfill__",
         outro: "",
       });
     })

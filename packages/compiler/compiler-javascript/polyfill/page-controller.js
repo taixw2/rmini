@@ -1,6 +1,20 @@
 import { callHook } from "./util";
 import { invoke } from "./jsbridge";
 
+function defineProperty(target, key, source) {
+  const descriptor = {
+    get() {
+      return source[key];
+    },
+
+    set() {
+      // no allow set
+    },
+  };
+
+  Object.defineProperty(target, key, descriptor);
+}
+
 export const initPage = function(pageOption) {
   return class PageController {
     /**
@@ -11,17 +25,20 @@ export const initPage = function(pageOption) {
       this.webviewId = webviewId;
       this.data = pageOption.data ?? {};
 
+      // 把方法挂载 this 上
       Reflect.ownKeys(pageOption).forEach((key) => {
         if (this[key]) return;
-
-        this[key] = pageOption[key];
+        defineProperty(this, key, pageOption);
       });
+
+      // 把初始化的 data 传给 webview
+      this.setData(this.data);
     }
 
     // JSCore 调用 setData 后，传递给原生
     // 原生再将 setData 传给 对应的 webview
     setData(data) {
-      invoke("setData", this.webviewId, data);
+      invoke("setData", false, this.webviewId, { ...this.data, ...data });
     }
 
     /**
