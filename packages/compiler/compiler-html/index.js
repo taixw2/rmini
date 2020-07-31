@@ -11,7 +11,7 @@ const template = {
   <html lang="en" style="font-size: __FONT_SIZE__px">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=—__SCALE__,maximum-scale=—__SCALE__,minimum-scale=—__SCALE__">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
   `,
   body: `
@@ -41,7 +41,7 @@ exports.compilerHtml = function(entryDir, appConfig, projectConfig) {
 
     const originalWxmlContent = await fs.promises.readFile(wxmlPath, { encoding: "utf-8" });
     const styleContent = await compilerStyle(pageEntry);
-    const scriptContent = await compilerJavascript(originalWxmlContent);
+    const scriptContent = compilerJavascript(originalWxmlContent);
     const wxmlContent = await compilerHtml(originalWxmlContent)
 
     let content = "";
