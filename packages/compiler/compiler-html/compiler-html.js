@@ -86,9 +86,7 @@ function compilerAttributeValue(attributes) {
 function postwxml(htmlTree) {
   builtInComponents.forEach((componentName) => {
     htmlTree.match({ tag: componentName }, (matchNode) => {
-      if (matchNode.tag !== "block") {
-        matchNode.tag = "wx-" + matchNode.tag;
-      }
+      matchNode.tag = matchNode.tag !== "block" ? "wx-" + matchNode.tag : 'template'
 
       if (!matchNode.attrs) return matchNode;
       compilerAttributeName(matchNode.attrs);
