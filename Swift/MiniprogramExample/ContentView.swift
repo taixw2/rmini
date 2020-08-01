@@ -9,24 +9,37 @@
 import SwiftUI
 
 struct ContentView : View {
-    @State var appId: String = "wxc8ecefecf650b4ff"
+    @State var appId: String = "wxa2feca6b7cce2b49"
     
-    @State var appURL: String = "http://10.0.3.52:3838/rminiprogram.zip"
+    // 小程序远程路径， 通过 appId 获取
+    @State var sourceBaseApi: String = "http://192.168.31.74:5000/"
     
     var body: some View {
         VStack {
-            TextField("获取小程序地址", text: $appURL)
+            VStack {
+                VStack(alignment: .leading) {
+                    Text(verbatim: "流程：")
+                    Text(verbatim: "1. 读取小程序 appId：")
+                    Text(verbatim: "2. 从服务器下载小程序包到本地：")
+                    Text(verbatim: "3. 设置小程序的高清方案 font-size & viewport：")
+                    Text(verbatim: "4. 创建 JSContext, 并且注入方法")
+                    Text(verbatim: "5. 执行小程序的 Javascript")
+                    Text(verbatim: "6. 获取小程序的首页，并且读取 HTML")
+                    Text(verbatim: "7. 创建 webview 实例，并且渲染 HTML")
+                    Text(verbatim: "8. 实例化一个 PageController， 并将 data 传给 webview")
+                }
+                TextField("获取小程序地址", text: $sourceBaseApi)
                 .disabled(true)
                 .padding(.all)
                 .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
-            VStack {
-                TextField("获取小程序的 appId", text: $appId)
+                TextField("请输入你要打开的小程序 appId", text: $appId)
                     .disabled(true)
                     .padding(.all)
                     .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
                 VStack {
                     Button(action: {
-                        MiniprogramRunningController().run(self.appId, URL(string: self.appURL)!)
+                        let miniprogramZipURL = self.sourceBaseApi.appending(self.appId).appending(".zip")
+                        MiniprogramRunningController().run(self.appId, URL(string: miniprogramZipURL)!)
                     }) {
                         Text("打开小程序")
                     }
@@ -43,6 +56,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
 
 
 // 打开一个 webview (loading)
