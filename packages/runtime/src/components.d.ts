@@ -87,7 +87,18 @@ export namespace Components {
         "catchTouchend": string;
         "catchTouchmove": string;
         "catchTouchstart": string;
-        "mode": "scaleToFill" | "aspectFit" | "aspectFill" | "top" | "bottom" | "left" | "center" | "right" | "topLeft" | "topRight" | "bottomLeft" | "bottomRight";
+        "mode": | "scaleToFill"
+    | "aspectFit"
+    | "aspectFill"
+    | "top"
+    | "bottom"
+    | "left"
+    | "center"
+    | "right"
+    | "topLeft"
+    | "topRight"
+    | "bottomLeft"
+    | "bottomRight";
         "src": string;
     }
     interface WxInput {
@@ -261,7 +272,18 @@ declare namespace LocalJSX {
         "catchTouchend"?: string;
         "catchTouchmove"?: string;
         "catchTouchstart"?: string;
-        "mode"?: "scaleToFill" | "aspectFit" | "aspectFill" | "top" | "bottom" | "left" | "center" | "right" | "topLeft" | "topRight" | "bottomLeft" | "bottomRight";
+        "mode"?: | "scaleToFill"
+    | "aspectFit"
+    | "aspectFill"
+    | "top"
+    | "bottom"
+    | "left"
+    | "center"
+    | "right"
+    | "topLeft"
+    | "topRight"
+    | "bottomLeft"
+    | "bottomRight";
         "src"?: string;
     }
     interface WxInput {

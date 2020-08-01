@@ -5,6 +5,8 @@ import Vue from "vue/dist/vue";
  * 导致这是异步执行的
  */
 export default function() {
+  Vue.config.ignoredElements.push(/^wx-/);
+
   function def(target: any, key: string, value: any) {
     Reflect.set(target, key, value);
   }
