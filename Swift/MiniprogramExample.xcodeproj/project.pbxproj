@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048E763F24D421950007D8DB /* JSContextModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E763E24D421950007D8DB /* JSContextModal.swift */; };
+		048E764224D42B030007D8DB /* JSInvokeNativeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E764124D42B030007D8DB /* JSInvokeNativeOption.swift */; };
+		04B636FC24D41EAE00AE3195 /* ReaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B636FB24D41EAE00AE3195 /* ReaderController.swift */; };
 		12C39BE66F7E5B6C3D86A94C /* Pods_MiniprogramExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2265B85D7C672ACF074AA593 /* Pods_MiniprogramExample.framework */; };
 		B813FC5523B4B0EE00558C5F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813FC5423B4B0EE00558C5F /* Dictionary.swift */; };
-		B813FC5823B4D1AF00558C5F /* JSConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813FC5723B4D1AF00558C5F /* JSConsole.swift */; };
 		B813FC5A23B4D23C00558C5F /* MiniprogramShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813FC5923B4D23C00558C5F /* MiniprogramShareController.swift */; };
 		B813FC5C23B4D54900558C5F /* JSBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813FC5B23B4D54900558C5F /* JSBridge.swift */; };
-		B83D2E0A23BA232F003A962C /* WechatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D2E0923BA232F003A962C /* WechatAPI.swift */; };
-		B83D2E0C23BA26D0003A962C /* JSValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D2E0B23BA26D0003A962C /* JSValueModel.swift */; };
 		B8583FA32397545700F80F95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FA22397545700F80F95 /* AppDelegate.swift */; };
 		B8583FA52397545700F80F95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FA42397545700F80F95 /* SceneDelegate.swift */; };
 		B8583FA72397545700F80F95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FA62397545700F80F95 /* ContentView.swift */; };
@@ -22,9 +22,8 @@
 		B8583FAF2397545A00F80F95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8583FAD2397545900F80F95 /* LaunchScreen.storyboard */; };
 		B8583FBA2397545A00F80F95 /* MiniprogramExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FB92397545A00F80F95 /* MiniprogramExampleTests.swift */; };
 		B8583FC52397545A00F80F95 /* MiniprogramExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FC42397545A00F80F95 /* MiniprogramExampleUITests.swift */; };
-		B8583FD72397906800F80F95 /* JavascriptCoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FD62397906800F80F95 /* JavascriptCoreController.swift */; };
 		B8583FDF2397960500F80F95 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FDE2397960500F80F95 /* WebViewController.swift */; };
-		B8583FEA2397CE9D00F80F95 /* MiniprogramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FE92397CE9D00F80F95 /* MiniprogramModel.swift */; };
+		B8583FEA2397CE9D00F80F95 /* MiniprogramController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FE92397CE9D00F80F95 /* MiniprogramController.swift */; };
 		B86E322623B25B7E00B133E7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E322523B25B7E00B133E7 /* String.swift */; };
 		B86E322A23B3042C00B133E7 /* FileSystemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E322923B3042C00B133E7 /* FileSystemController.swift */; };
 		B86E322C23B3090000B133E7 /* LoggerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E322B23B3090000B133E7 /* LoggerController.swift */; };
@@ -33,6 +32,10 @@
 		B86E323323B3142200B133E7 /* MiniprogramRunningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E323223B3142200B133E7 /* MiniprogramRunningController.swift */; };
 		B86E324023B48C2300B133E7 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E323F23B48C2300B133E7 /* WebViewModel.swift */; };
 		B86E324223B49F9900B133E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B86E324123B49F9900B133E7 /* Main.storyboard */; };
+		B8E2903D24D470150042C42E /* JSBridge+setData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2903C24D470150042C42E /* JSBridge+setData.swift */; };
+		B8E2903F24D473330042C42E /* JSBridge+launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2903E24D473330042C42E /* JSBridge+launch.swift */; };
+		B8E2904324D50D4E0042C42E /* WebViewController+NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2904224D50D4E0042C42E /* WebViewController+NavigationController.swift */; };
+		B8E2904524D51B590042C42E /* UIButtion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2904424D51B590042C42E /* UIButtion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,15 +56,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		048E763E24D421950007D8DB /* JSContextModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSContextModal.swift; sourceTree = "<group>"; };
+		048E764124D42B030007D8DB /* JSInvokeNativeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSInvokeNativeOption.swift; sourceTree = "<group>"; };
+		04B636FB24D41EAE00AE3195 /* ReaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderController.swift; sourceTree = "<group>"; };
 		2265B85D7C672ACF074AA593 /* Pods_MiniprogramExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniprogramExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90F2F4F61C19C2CEDE25803F /* Pods-MiniprogramExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniprogramExample.debug.xcconfig"; path = "Target Support Files/Pods-MiniprogramExample/Pods-MiniprogramExample.debug.xcconfig"; sourceTree = "<group>"; };
 		B3F409B3D43FB5AC6FE000AE /* Pods-MiniprogramExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniprogramExample.release.xcconfig"; path = "Target Support Files/Pods-MiniprogramExample/Pods-MiniprogramExample.release.xcconfig"; sourceTree = "<group>"; };
 		B813FC5423B4B0EE00558C5F /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
-		B813FC5723B4D1AF00558C5F /* JSConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSConsole.swift; sourceTree = "<group>"; };
 		B813FC5923B4D23C00558C5F /* MiniprogramShareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniprogramShareController.swift; sourceTree = "<group>"; };
 		B813FC5B23B4D54900558C5F /* JSBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSBridge.swift; sourceTree = "<group>"; };
-		B83D2E0923BA232F003A962C /* WechatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechatAPI.swift; sourceTree = "<group>"; };
-		B83D2E0B23BA26D0003A962C /* JSValueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSValueModel.swift; sourceTree = "<group>"; };
 		B8583F9F2397545700F80F95 /* MiniprogramExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniprogramExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8583FA22397545700F80F95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8583FA42397545700F80F95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,9 +79,8 @@
 		B8583FC02397545A00F80F95 /* MiniprogramExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniprogramExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8583FC42397545A00F80F95 /* MiniprogramExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniprogramExampleUITests.swift; sourceTree = "<group>"; };
 		B8583FC62397545A00F80F95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8583FD62397906800F80F95 /* JavascriptCoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavascriptCoreController.swift; sourceTree = "<group>"; };
 		B8583FDE2397960500F80F95 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		B8583FE92397CE9D00F80F95 /* MiniprogramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniprogramModel.swift; sourceTree = "<group>"; };
+		B8583FE92397CE9D00F80F95 /* MiniprogramController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniprogramController.swift; sourceTree = "<group>"; };
 		B86E322523B25B7E00B133E7 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		B86E322923B3042C00B133E7 /* FileSystemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemController.swift; sourceTree = "<group>"; };
 		B86E322B23B3090000B133E7 /* LoggerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,10 @@
 		B86E323223B3142200B133E7 /* MiniprogramRunningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniprogramRunningController.swift; sourceTree = "<group>"; };
 		B86E323F23B48C2300B133E7 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		B86E324123B49F9900B133E7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B8E2903C24D470150042C42E /* JSBridge+setData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSBridge+setData.swift"; sourceTree = "<group>"; };
+		B8E2903E24D473330042C42E /* JSBridge+launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSBridge+launch.swift"; sourceTree = "<group>"; };
+		B8E2904224D50D4E0042C42E /* WebViewController+NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebViewController+NavigationController.swift"; sourceTree = "<group>"; };
+		B8E2904424D51B590042C42E /* UIButtion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		048E764024D42AC40007D8DB /* ObjectMapper */ = {
+			isa = PBXGroup;
+			children = (
+				048E764124D42B030007D8DB /* JSInvokeNativeOption.swift */,
+			);
+			path = ObjectMapper;
+			sourceTree = "<group>";
+		};
 		9C1477284BA83C67A99D3951 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,9 +141,9 @@
 		B813FC5623B4D19D00558C5F /* JSExport */ = {
 			isa = PBXGroup;
 			children = (
-				B813FC5723B4D1AF00558C5F /* JSConsole.swift */,
 				B813FC5B23B4D54900558C5F /* JSBridge.swift */,
-				B83D2E0923BA232F003A962C /* WechatAPI.swift */,
+				B8E2903C24D470150042C42E /* JSBridge+setData.swift */,
+				B8E2903E24D473330042C42E /* JSBridge+launch.swift */,
 			);
 			path = JSExport;
 			sourceTree = "<group>";
@@ -164,8 +178,6 @@
 				B8583FE22397CCD000F80F95 /* Model */,
 				B8583FA22397545700F80F95 /* AppDelegate.swift */,
 				B8583FA42397545700F80F95 /* SceneDelegate.swift */,
-				B8583FDE2397960500F80F95 /* WebViewController.swift */,
-				B8583FD62397906800F80F95 /* JavascriptCoreController.swift */,
 				B8583FA62397545700F80F95 /* ContentView.swift */,
 				B86E322E23B30A0D00B133E7 /* Launch.swift */,
 				B8583FA82397545900F80F95 /* Assets.xcassets */,
@@ -206,9 +218,9 @@
 		B8583FE22397CCD000F80F95 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B8583FE92397CE9D00F80F95 /* MiniprogramModel.swift */,
+				048E764024D42AC40007D8DB /* ObjectMapper */,
 				B86E323F23B48C2300B133E7 /* WebViewModel.swift */,
-				B83D2E0B23BA26D0003A962C /* JSValueModel.swift */,
+				048E763E24D421950007D8DB /* JSContextModal.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -218,6 +230,7 @@
 			children = (
 				B86E322523B25B7E00B133E7 /* String.swift */,
 				B813FC5423B4B0EE00558C5F /* Dictionary.swift */,
+				B8E2904424D51B590042C42E /* UIButtion.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -237,6 +250,7 @@
 			children = (
 				B86E322923B3042C00B133E7 /* FileSystemController.swift */,
 				B86E322B23B3090000B133E7 /* LoggerController.swift */,
+				04B636FB24D41EAE00AE3195 /* ReaderController.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -244,6 +258,9 @@
 		B86E322D23B309ED00B133E7 /* CoreModule */ = {
 			isa = PBXGroup;
 			children = (
+				B8583FE92397CE9D00F80F95 /* MiniprogramController.swift */,
+				B8583FDE2397960500F80F95 /* WebViewController.swift */,
+				B8E2904224D50D4E0042C42E /* WebViewController+NavigationController.swift */,
 				B86E323023B30A2300B133E7 /* Const.swift */,
 				B86E323223B3142200B133E7 /* MiniprogramRunningController.swift */,
 				B813FC5923B4D23C00558C5F /* MiniprogramShareController.swift */,
@@ -457,21 +474,24 @@
 				B8583FDF2397960500F80F95 /* WebViewController.swift in Sources */,
 				B86E322A23B3042C00B133E7 /* FileSystemController.swift in Sources */,
 				B86E322F23B30A0D00B133E7 /* Launch.swift in Sources */,
-				B83D2E0C23BA26D0003A962C /* JSValueModel.swift in Sources */,
 				B813FC5523B4B0EE00558C5F /* Dictionary.swift in Sources */,
 				B8583FA52397545700F80F95 /* SceneDelegate.swift in Sources */,
+				04B636FC24D41EAE00AE3195 /* ReaderController.swift in Sources */,
+				B8E2904524D51B590042C42E /* UIButtion.swift in Sources */,
+				B8E2903D24D470150042C42E /* JSBridge+setData.swift in Sources */,
+				B8E2903F24D473330042C42E /* JSBridge+launch.swift in Sources */,
 				B86E323323B3142200B133E7 /* MiniprogramRunningController.swift in Sources */,
 				B86E323123B30A2300B133E7 /* Const.swift in Sources */,
 				B813FC5C23B4D54900558C5F /* JSBridge.swift in Sources */,
 				B86E322C23B3090000B133E7 /* LoggerController.swift in Sources */,
-				B8583FEA2397CE9D00F80F95 /* MiniprogramModel.swift in Sources */,
+				B8583FEA2397CE9D00F80F95 /* MiniprogramController.swift in Sources */,
 				B813FC5A23B4D23C00558C5F /* MiniprogramShareController.swift in Sources */,
-				B83D2E0A23BA232F003A962C /* WechatAPI.swift in Sources */,
 				B8583FA72397545700F80F95 /* ContentView.swift in Sources */,
+				048E763F24D421950007D8DB /* JSContextModal.swift in Sources */,
 				B86E324023B48C2300B133E7 /* WebViewModel.swift in Sources */,
 				B86E322623B25B7E00B133E7 /* String.swift in Sources */,
-				B813FC5823B4D1AF00558C5F /* JSConsole.swift in Sources */,
-				B8583FD72397906800F80F95 /* JavascriptCoreController.swift in Sources */,
+				048E764224D42B030007D8DB /* JSInvokeNativeOption.swift in Sources */,
+				B8E2904324D50D4E0042C42E /* WebViewController+NavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
