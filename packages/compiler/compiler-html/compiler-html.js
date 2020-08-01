@@ -1,4 +1,3 @@
-const fs = require("fs");
 const posthtml = require("posthtml");
 const { builtInComponents } = require("../utils/constants");
 const { delProp } = require("../utils/utils");
@@ -86,7 +85,7 @@ function compilerAttributeValue(attributes) {
 function postwxml(htmlTree) {
   builtInComponents.forEach((componentName) => {
     htmlTree.match({ tag: componentName }, (matchNode) => {
-      matchNode.tag = matchNode.tag !== "block" ? "wx-" + matchNode.tag : 'template'
+      matchNode.tag = matchNode.tag !== "block" ? "wx-" + matchNode.tag : "template";
 
       if (!matchNode.attrs) return matchNode;
       compilerAttributeName(matchNode.attrs);
