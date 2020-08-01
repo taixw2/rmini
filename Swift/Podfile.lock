@@ -1,24 +1,28 @@
 PODS:
+  - ObjectMapper (3.5.3)
   - PKHUD (5.3.0)
   - SDDownloadManager (1.1.0)
   - SSZipArchive (2.2.2)
 
 DEPENDENCIES:
+  - ObjectMapper (~> 3.5)
   - PKHUD (~> 5.0)
   - SDDownloadManager
   - SSZipArchive
 
 SPEC REPOS:
-  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+  https://gitee.com/mirrors/CocoaPods-Specs.git:
+    - ObjectMapper
     - PKHUD
     - SDDownloadManager
     - SSZipArchive
 
 SPEC CHECKSUMS:
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   SDDownloadManager: 62a9339c03ea27606effefd9aa1800e4127e3a52
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
 
-PODFILE CHECKSUM: 20b1d1f621fe53809f9b3bd52a5d9aac599999a9
+PODFILE CHECKSUM: 299ae8deeeea2ee583cae6cce27003f63fad6755
 
 COCOAPODS: 1.8.4
