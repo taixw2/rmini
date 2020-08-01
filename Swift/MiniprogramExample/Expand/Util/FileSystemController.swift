@@ -16,7 +16,7 @@ final class FileSystemController {
     static let shared = FileSystemController()
     private let fileSystem = FileManager.default
     private init() {}
-
+    
     
     /// 写入内容到指定m文件
     /// - Parameter file: 文件路径
@@ -31,7 +31,7 @@ final class FileSystemController {
             error = err
         }
     }
-
+    
     
     /// q读取指定文件的内容
     /// - Parameter file: 文件路径
@@ -60,13 +60,41 @@ final class FileSystemController {
             error = err
         }
     }
-
+    
     
     /// 读取路径下的文件
     /// - Parameter path: 路径
     /// - Parameter error: 异常
     func readDir(path: String, error: inout Error?) -> [String]? {
         do {
+            return try fileSystem.contentsOfDirectory(atPath: path)
+        } catch let err {
+            error = err
+            return nil
+        }
+    }
+    
+    
+    /// 读取路径下的文件
+    /// - Parameter path: 路径
+    /// - Parameter error: 异常
+    func readDir(path: String, recursive: Bool, error: inout Error?) -> [String]? {
+        do {
+            if (recursive) {
+                let url = URL(fileURLWithPath: path)
+                var files = [String]()
+                if let enumerator = FileManager.default.enumerator(at: url, includingPropertiesForKeys: [.isRegularFileKey], options: [.skipsHiddenFiles, .skipsPackageDescendants]) {
+                    for case let fileURL as URL in enumerator {
+                        do {
+                            let fileAttributes = try fileURL.resourceValues(forKeys:[.isRegularFileKey])
+                            if fileAttributes.isRegularFile! {
+                                files.append(fileURL.path)
+                            }
+                        } catch { print(error, fileURL) }
+                    }
+                    return files
+                }
+            }
             return try fileSystem.contentsOfDirectory(atPath: path)
         } catch let err {
             error = err
@@ -96,7 +124,7 @@ final class FileSystemController {
             error = err
         }
     }
-
+    
     
     /// 文件是否存在
     /// - Parameter file: 文件路径
@@ -110,7 +138,7 @@ final class FileSystemController {
         let nsfile = NSString(string: file)
         return nsfile.deletingLastPathComponent
     }
-
+    
     
     /// m文件所在的目录是否存在
     /// - Parameter file: 文件路径
