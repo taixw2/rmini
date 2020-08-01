@@ -30,7 +30,10 @@ exports.compilerPolyfill = (AppConfig, ProjectConfig) => {
             },
           ],
         ],
-        plugins: ["@babel/plugin-proposal-nullish-coalescing-operator", "@babel/plugin-proposal-optional-chaining"],
+        plugins: [
+          "@babel/plugin-proposal-nullish-coalescing-operator",
+          "@babel/plugin-proposal-optional-chaining",
+        ],
         exclude: "node_modules/**",
       }),
     ],
@@ -41,7 +44,8 @@ exports.compilerPolyfill = (AppConfig, ProjectConfig) => {
    */
   const outputOptions = {
     format: "umd",
-    name: "__ployfill__",
+    strict: false,
+    name: "__polyfill__",
   };
 
   return rollup
@@ -51,9 +55,9 @@ exports.compilerPolyfill = (AppConfig, ProjectConfig) => {
     })
     .then((res) => res.output[0].code)
     .then((code) => {
-        // console.log(code)
-        return code
-    })
+      // console.log(code)
+      return code;
+    });
 };
 
 // exports.compilerPolyfill();

@@ -40,14 +40,17 @@ exports.compilerJavascript = async function(entryDir, appConfig, projectConfig) 
             },
           ],
         ],
-        plugins: ["@babel/plugin-proposal-nullish-coalescing-operator", "@babel/plugin-proposal-optional-chaining"],
+        plugins: [
+          "@babel/plugin-proposal-nullish-coalescing-operator",
+          "@babel/plugin-proposal-optional-chaining",
+        ],
         exclude: "node_modules/**",
-      })
+      }),
     );
   }
 
   if (projectConfig.setting.minified) {
-    rollupPlugins.push(terser.terser());
+    // rollupPlugins.push(terser.terser());
   }
 
   /**
@@ -78,8 +81,15 @@ function rollupCompiler(entry, plugins, polyfill) {
     })
     .then((bundler) => {
       return bundler.generate({
+        strict: false,
         format: "iife",
-        intro: "const { getApp, wx, App, Page, global } = __polyfill",
+        intro: `
+        var getApp = global.__polyfill__.getApp;
+        var wx = global.__polyfill__.wx;
+        var App = global.__polyfill__.App;
+        var Page = global.__polyfill__.Page;
+        var console = global.__polyfill__.console;
+        `,
         outro: "",
       });
     })

@@ -4,7 +4,7 @@ const store = {
    */
   appConfig: __APPCONFIG__,
 
-  pageConfig: __PROJECTCONFIG__,
+  projectConfig: __PROJECTCONFIG__,
 
   app: {},
 
@@ -47,8 +47,11 @@ export const popRouter = () => {
 
 export const getRouteStacks = () => store.routeStacks;
 
-export const getRouteByWebviewId = (webviewId) => store.routeStacks.filter((pageController) => pageController.webviewId === webviewId)[0];
+export const getRouteByWebviewId = (webviewId) =>
+  store.routeStacks.filter((pageController) => pageController.webviewId === webviewId)[0];
 
 export const getCurrentWebviewId = () => store.currentWebviewId;
 
-export const getAppConfig = () => store.getAppConfig
+export const getAppConfig = () => store.appConfig;
+
+export const getProjectConfig = () => store.projectConfig;
