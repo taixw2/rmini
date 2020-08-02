@@ -1,4 +1,4 @@
-import { invoke } from "./jsbridge";
+import { console as _console } from "./console";
 
 /**
  * 导出给小程序使用的方法
@@ -15,14 +15,4 @@ export { nativeInvoke } from "./export-native";
  */
 export const global = {};
 
-export const console = {
-  info(...msg) {
-    invoke("console", false, "", ["info:", ...msg]);
-  },
-  log(...msg) {
-    invoke("console", false, "", msg);
-  },
-  error(...msg) {
-    invoke("console", false, "", ["error: ", ...msg]);
-  },
-};
+export const console = _console
