@@ -1,5 +1,6 @@
 exports.builtInComponents = [
   // 容器
+  "block",
   "scroll-view",
   "swiper",
   "swiper-item",
