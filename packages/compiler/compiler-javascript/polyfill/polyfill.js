@@ -39,9 +39,9 @@ export function Page(option) {
 export const wx = {};
 
 wechatApiList.forEach((key) => {
-  wx[key] = function(option) {
+  wx[key] = function(...payload) {
     const sync = key.endsWith("Sync");
     const method = sync ? key.substr(0, key.length - 4) : key;
-    return invoke(method, sync, store.getCurrentWebviewId(), option)
+    return invoke(method, sync, store.getCurrentWebviewId(), payload)
   };
 });
