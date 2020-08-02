@@ -1,6 +1,7 @@
 import * as store from "./store";
 import * as jsbridge from "./jsbridge";
 import { callHook } from "./util";
+import { console } from "./console"
 
 /**
  * 原生用来调用 JS 的入口
@@ -26,16 +27,26 @@ export function nativeInvoke(option) {
     ? popRouter()
     : option.type === 6
     ? init(option.payload)
+    : option.type === 7
+    ? callPageMethod(option.payload)
     : null;
 }
 
 /**
- * 调用某个 Page 的生命周期
+ * 调用某个 Page 的生命周期/方法
  * @param {{ lifecycle: string, payload: any, webviewId: string }} option
  */
 function callPageLifecycle(option) {
   const pageController = store.getRouteByWebviewId(option.webviewId) || {};
   callHook(pageController, option.lifecycle, pageController, option.payload);
+}
+/**
+ * 调用某个 Page 的生命周期/方法
+ * @param {{ payload: any, webviewId: string }} option
+ */
+function callPageMethod(option) {
+  const pageController = store.getRouteByWebviewId(option.webviewId) || {};
+  callHook(pageController, option.method, pageController, option.payload);
 }
 
 /**
@@ -62,11 +73,13 @@ function callCbs(option) {
  * @param {{ webviewId: string, pageId: string }} option
  */
 function pushRouter(option) {
-  const PageClass = store.getPage(option.pageId);
+  let pageId = option.pageId.startsWith("/") ? option.pageId : "/" + option.pageId
+  const PageClass = store.getPage(pageId);
   /**
    * 一个页面可以只定义 wxml， 不定义 js
    */
   if (!PageClass) {
+    console.error("error: pageId not fount " + pageId)
     return;
   }
   store.pushRouter(new PageClass(option.webviewId));
