@@ -2,11 +2,11 @@
 <view class="container">
   <view class="userinfo">
     <block>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}?q=1" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view>{{count}}</view>
+  <view>count: {{count}}</view>
   <view class="button-groups">
     <button bindtap="add" data-id="123">添加</button>
     <button bindtap="reduce">减少</button>

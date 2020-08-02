@@ -1,4 +1,14 @@
 /**index.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+  font-size: 28rpx;
+} 
 
 .userinfo,
 .button-groups {
@@ -19,14 +29,19 @@
 
 .userinfo-nickname {
   color: #aaa;
+  display: block;
+  text-align: center;
+  font-size: 32rpx;
 }
 
 .usermotto {
   margin-top: 200px;
+  font-size: 28rpx;
 }
 
 .button-groups {
   justify-content: center;
+  width: 100vw
 }
 
 .button-groups button {
