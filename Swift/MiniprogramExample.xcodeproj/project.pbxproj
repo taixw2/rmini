@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		048E763F24D421950007D8DB /* JSContextModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E763E24D421950007D8DB /* JSContextModal.swift */; };
 		048E764224D42B030007D8DB /* JSInvokeNativeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E764124D42B030007D8DB /* JSInvokeNativeOption.swift */; };
+		048E764524D692620007D8DB /* PageLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E764424D692620007D8DB /* PageLifecycle.swift */; };
+		048E764724D69F280007D8DB /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E764624D69F280007D8DB /* URL.swift */; };
 		04B636FC24D41EAE00AE3195 /* ReaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B636FB24D41EAE00AE3195 /* ReaderController.swift */; };
 		12C39BE66F7E5B6C3D86A94C /* Pods_MiniprogramExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2265B85D7C672ACF074AA593 /* Pods_MiniprogramExample.framework */; };
 		B813FC5523B4B0EE00558C5F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813FC5423B4B0EE00558C5F /* Dictionary.swift */; };
@@ -67,6 +69,8 @@
 /* Begin PBXFileReference section */
 		048E763E24D421950007D8DB /* JSContextModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSContextModal.swift; sourceTree = "<group>"; };
 		048E764124D42B030007D8DB /* JSInvokeNativeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSInvokeNativeOption.swift; sourceTree = "<group>"; };
+		048E764424D692620007D8DB /* PageLifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageLifecycle.swift; sourceTree = "<group>"; };
+		048E764624D69F280007D8DB /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		04B636FB24D41EAE00AE3195 /* ReaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderController.swift; sourceTree = "<group>"; };
 		2265B85D7C672ACF074AA593 /* Pods_MiniprogramExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniprogramExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90F2F4F61C19C2CEDE25803F /* Pods-MiniprogramExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniprogramExample.debug.xcconfig"; path = "Target Support Files/Pods-MiniprogramExample/Pods-MiniprogramExample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +150,14 @@
 				B8E2904824D59ECB0042C42E /* WebviewInvokeNativeOption.swift */,
 			);
 			path = ObjectMapper;
+			sourceTree = "<group>";
+		};
+		048E764324D692550007D8DB /* PageLifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				048E764424D692620007D8DB /* PageLifecycle.swift */,
+			);
+			path = PageLifecycle;
 			sourceTree = "<group>";
 		};
 		9C1477284BA83C67A99D3951 /* Pods */ = {
@@ -254,6 +266,7 @@
 				B86E322523B25B7E00B133E7 /* String.swift */,
 				B813FC5423B4B0EE00558C5F /* Dictionary.swift */,
 				B8E2904424D51B590042C42E /* UIButtion.swift */,
+				048E764624D69F280007D8DB /* URL.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -261,6 +274,7 @@
 		B86E322723B303E600B133E7 /* Expand */ = {
 			isa = PBXGroup;
 			children = (
+				048E764324D692550007D8DB /* PageLifecycle */,
 				B8E2904A24D5A0FC0042C42E /* WebviewExport */,
 				B813FC5623B4D19D00558C5F /* JSExport */,
 				B86E322823B3040100B133E7 /* Util */,
@@ -519,6 +533,7 @@
 				B847923024D5A2DB000FCE60 /* WebJSBridge+lifecycle.swift in Sources */,
 				B847923A24D5C79A000FCE60 /* JSBridge+setStorage.swift in Sources */,
 				B847923824D5C777000FCE60 /* JSBridge+getStorage.swift in Sources */,
+				048E764724D69F280007D8DB /* URL.swift in Sources */,
 				B8E2903F24D473330042C42E /* JSBridge+launch.swift in Sources */,
 				B86E323323B3142200B133E7 /* MiniprogramRunningController.swift in Sources */,
 				B86E323123B30A2300B133E7 /* Const.swift in Sources */,
@@ -532,6 +547,7 @@
 				B86E324023B48C2300B133E7 /* WebViewModel.swift in Sources */,
 				B8E2904724D575E90042C42E /* JSBridge+console.swift in Sources */,
 				B86E322623B25B7E00B133E7 /* String.swift in Sources */,
+				048E764524D692620007D8DB /* PageLifecycle.swift in Sources */,
 				B847923224D5A319000FCE60 /* WebJSBridge+log.swift in Sources */,
 				048E764224D42B030007D8DB /* JSInvokeNativeOption.swift in Sources */,
 				B8E2904324D50D4E0042C42E /* WebViewController+NavigationController.swift in Sources */,
