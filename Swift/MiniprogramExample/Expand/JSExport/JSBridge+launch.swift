@@ -27,22 +27,21 @@ extension JSBridge {
         // 把数据传递给 webviewController
         let payload = LaunchPayload(JSON: option.payload as? [String:Any] ?? [:])
         
+        logger.info("launch")
         DispatchQueue(label: "com.miniprogram.wait.created").async {
-            
             while (true) {
                 let miniprogramController = MiniprogramShareController.shared.getMiniprogramController(appId: option.appId!)
                 if (miniprogramController != nil) {
                     DispatchQueue.main.async {
                         let miniprogramController = MiniprogramShareController.shared.getMiniprogramController(appId: option.appId!)
                         miniprogramController?.ready(pagePath: payload!.url!)
-                        callback("")
+                        
                     }
                     break
                 }
             }
             
         }
-        
-        
+        callback("")
     }
 }

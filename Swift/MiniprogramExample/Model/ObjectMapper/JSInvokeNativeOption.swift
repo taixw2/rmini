@@ -14,7 +14,7 @@ class JSInvokeNativeOption: NSObject, ObjectMapper.Mappable {
     var appId: String?
     var isSync: Bool?
     var method: InvokeNativeMethod?
-    var webviewId: String?
+    var webviewId: Int?
     var payload: Any?
     
     required init?(map: Map) {

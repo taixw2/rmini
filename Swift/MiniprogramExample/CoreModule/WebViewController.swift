@@ -13,16 +13,31 @@ import WebKit
 
 class WebViewController: UIViewController {
     
-    static func createWebview(appId: String) -> WebViewController {
-        let webviewController = WebViewController(appId: appId)
+    static func createWebview(appId: String, webviewId: Int) -> WebViewController {
+        let webviewController = WebViewController(appId: appId, webviewId: webviewId)
         return webviewController
     }
     
-    var webview: WKWebView!
+    var webview: WKWebView?
+    
+    // Vue 实例是否已经初始化完成
+    var isReady: Bool = false
+    
+    // appId 用于 webview 调用原生时找到对应的 MiniprogranController
     let appId: String
     
-    init(appId: String) {
+    // webviewId 用于对应的 JSContext 找到对应的 PageController
+    let webviewId: Int
+    
+    // ready 以前把脚本记录
+    var scripts: [String] = []
+    
+    var htmlContent = ""
+    
+    init(appId: String, webviewId: Int) {
         self.appId = appId
+        self.webviewId = webviewId
+        logger.info("🧲 init")
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -32,31 +47,46 @@ class WebViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setTitlebar()
         
         let preferences = WKPreferences()
         preferences.javaScriptEnabled = true
         
         let controller = WKUserContentController()
-        controller.add(self, name: "error")
+        controller.add(self, name: "trigger")
         
         let configuration = WKWebViewConfiguration()
         configuration.preferences = preferences
         configuration.userContentController = controller
         
         webview = WKWebView(frame: view.bounds, configuration: configuration)
-        webview.uiDelegate = self
-        webview.navigationDelegate = self
-        view.addSubview(webview)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        webview!.uiDelegate = self
+        webview!.navigationDelegate = self
+        view.addSubview(webview!)
+        logger.info("🧲 didload")
         
-        setTitlebar()
+        if !htmlContent.isEmpty {
+            webview!.loadHTMLString(htmlContent, baseURL: URL(string: "http://localhost"))
+        }
     }
     
-  
+    deinit {
+        webview?.configuration.userContentController.removeScriptMessageHandler(forName: "trigger")
+    }
+    
+    
+    private func run(script: String) {
+        webview?.evaluateJavaScript(script) { (data, error) in
+            if (error != nil) {
+                logger.error(error)
+            }
+        }
+    }
+    
     public func load(pagePath: String) {
         var error: Error?
         let htmlContent = ReaderController.shared.readFilecontent(appId: appId, filename: pagePath.appending("/index.html"), error: &error)
@@ -64,48 +94,42 @@ class WebViewController: UIViewController {
             logger.error(error)
             return
         }
+        logger.info("🧲 load")
+        guard let wview = webview else {
+            self.htmlContent = htmlContent
+            return
+        }
         
-        logger.info(htmlContent)
-        webview.loadHTMLString(htmlContent, baseURL: URL(string: "http://localhost"))
+        wview.loadHTMLString(htmlContent, baseURL: URL(string: "http://localhost"))
     }
     
     public func setData(data: String) {
-        //        container.evaluateJavaScript("window.setData(\(data))", completionHandler: nil)
+        let script = "window.__setData(\(data))"
+        if !isReady {
+            scripts.append(script)
+            return
+        }
+        
+        run(script: script)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    public func ready() {
+        self.isReady = true
+        self.scripts.forEach { (script) in
+            self.run(script: script)
+        }
+    }
 }
 
 extension WebViewController: WKScriptMessageHandler, WKNavigationDelegate, WKUIDelegate  {
-    
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-            switch message.name {
-            case "error":
-                let error = (message.body as? [String: Any])?["message"] as? String ?? "unknown"
-                logger.error(error)
-            default: break
-//                assertionFailure("Received invalid message: \(message.name)")
-            }
+        switch message.name {
+        case "trigger":
+            let option = WebviewInvokeNativeOption(JSONString: message.body as? String ?? "")
+            option?.invoke(target: self)
+        default: break
+            //                assertionFailure("Received invalid message: \(message.name)")
         }
-    }
-  
-    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-        logger.info(navigationResponse.response)
-    }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        //        let initData = try! self.webviewModel.initData.toJSON()
-        //        setData(data: initData)
     }
     
 }

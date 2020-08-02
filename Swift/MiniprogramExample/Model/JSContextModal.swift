@@ -10,10 +10,10 @@ import Foundation
 import JavaScriptCore
 
 class JSContextPayload {
-    let type: Int
+    let type: InvokeJSCoreType
     let payload: Dictionary<String, Any>
 
-    init(type: Int, payload: Dictionary<String, Any>) {
+    init(type: InvokeJSCoreType, payload: Dictionary<String, Any>) {
         self.type = type
         self.payload = payload
     }
@@ -46,7 +46,7 @@ class JSContextModal {
     
     func invoke(payload: JSContextPayload) {
         let payloadJSON = try! payload.payload.toJSON()
-        let scriptContent = "module.exports.__polyfill__.nativeInvoke({ type: \(payload.type), payload: \(payloadJSON) })"
+        let scriptContent = "module.exports.__polyfill__.nativeInvoke({ type: \(payload.type.rawValue), payload: \(payloadJSON) })"
         
         logger.info("execscript: \(scriptContent)")
         self.context.evaluateScript(scriptContent)

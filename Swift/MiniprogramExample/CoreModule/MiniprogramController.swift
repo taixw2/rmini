@@ -44,18 +44,33 @@ class MiniprogramController {
     }
     
     private func craeteWebview() {
-        routeStack.append(WebViewController.createWebview(appId: self.appId))
+        routeStack.append(WebViewController.createWebview(appId: self.appId, webviewId: uid))
         uid += 1
     }
     
+    private func pushWebview(pagePath: String) {
+        routeStack.last!.load(pagePath: pagePath)
+        let miniprogramController = MiniprogramShareController.shared.getMiniprogramController(appId: self.appId)
+        let payload = JSContextPayload(type: InvokeJSCoreType.callPushRouter, payload: ["webviewId":uid - 1, "pageId": pagePath])
+        miniprogramController?.JSContext.invoke(payload: payload)
+    }
+    
+    // 流程：
+    // webview 实例化完成后，会给 JSC 发一个 Init 通知
+    // JSC 找出对应的 page path 发挥给 swift
+    // swift 等到 miniporgram 实例化完成后调用 ready
     public func ready(pagePath: String) {
-        routeStack.first?.load(pagePath: pagePath)
+        pushWebview(pagePath: pagePath)
+    }
+    
+    public func getWebview(with webviewId: Int) -> WebViewController {
+        return routeStack[webviewId]
     }
     
     public func push(pagePath: String) {
         craeteWebview()
-        // TODO: 推入路由
         rootViewController?.pushViewController(routeStack.last!, animated: true)
+        pushWebview(pagePath: pagePath)
     }
     
     public func pop(len: Int = 1) {
@@ -65,7 +80,6 @@ class MiniprogramController {
         } else {
             routeStack.removeSubrange(currentRouteIndex...(currentRouteIndex + len))
         }
-        
         logger.info(routeStack)
         rootViewController?.popToViewController(routeStack.last!, animated: true)
     }

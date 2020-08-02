@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView : View {
-    @State var appId: String = "wxa2feca6b7cce2b49"
+    @State var appId: String = "wxc8ecefecf650b4ff"
     
     // 小程序远程路径， 通过 appId 获取
     @State var sourceBaseApi: String = "http://192.168.31.74:5000/"

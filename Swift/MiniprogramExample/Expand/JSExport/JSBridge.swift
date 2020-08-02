@@ -13,7 +13,6 @@ import UIKit
     static func invoke(_ payload: String) -> Any?
 }
 
-
 class JSBridge: NSObject, JSBridgeExports {
     class func invoke(_ payload: String) -> Any? {
         let invokeOption = JSInvokeNativeOption(JSONString: payload)
@@ -23,12 +22,19 @@ class JSBridge: NSObject, JSBridgeExports {
 
 extension InvokeNativeMethod {
     func load(options: JSInvokeNativeOption, _ callback: @escaping (Any?) -> Void) {
-        // TODO
         switch self {
         case .setData:
             JSBridge.setData(option: options, callback: callback)
         case .launch:
             JSBridge.launch(option: options, callback: callback)
+        case .console:
+            JSBridge.console(option: options, callback: callback)
+        case .navigateTo:
+            JSBridge.navigateTo(option: options, callback: callback)
+        case .setStorage:
+            JSBridge.setStorage(option: options, callback: callback)
+        case .getStorage:
+            JSBridge.getStorage(option: options, callback: callback)
         default:
             logger.warn("method no support \(self)")
         }

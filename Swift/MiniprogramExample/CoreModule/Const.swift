@@ -26,25 +26,34 @@ enum AppConfig {
     static let tempMiniprogramDir = System.tempDirectory.appending("miniprogram/")
 }
 
-enum InvokeJSCoreType {
-//    * 1. 调用 Page 的生命周期
-    static let callPageLifecycle = 1
+enum InvokeJSCoreType: Int {
+    //    * 1. 调用 Page 的生命周期
+    case callPageLifecycle = 1
     // * 2. 调用 App 的生命周期
-    static let callLifecycle = 2
+    case callLifecycle = 2
     // * 3. 调用回调函数
-    static let callCallback = 3
+    case  callCallback = 3
     // * 4. 进入路由
-    static let callPushRouter = 4
+    case  callPushRouter = 4
     // * 5. 退出路由
-    static let callPopRouter = 5
+    case  callPopRouter = 5
     // * 6. 初始化 Page
-    static let callInitial = 6
+    case  callInitial = 6
+    // * 7. 初始化 Page
+    case  callPageMethod = 7
+}
+
+enum WebviewInvokeNative: Int {
+    case log = 0
+    case lifecycle = 1
+    case event = 2
 }
 
 enum InvokeNativeMethod: String {
     // 内部 API
     case setData = "setData"
     case launch = "launch"
+    case console = "console"
     
     // 处理常用的 API
     // login getStorageSync setStorageSync getSetting getUserInfo navigateTo navigateBack
