@@ -47,8 +47,8 @@ export const popRouter = () => {
 
 export const getRouteStacks = () => store.routeStacks;
 
-export const getRouteByWebviewId = (webviewId) =>
-  store.routeStacks.filter((pageController) => pageController.webviewId === webviewId)[0];
+export const getRouteByWebviewId = (webviewId) => 
+  store.routeStacks.filter((pageController) => Number(pageController.webviewId) === Number(webviewId))[0];
 
 export const getCurrentWebviewId = () => store.currentWebviewId;
 
