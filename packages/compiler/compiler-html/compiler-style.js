@@ -37,6 +37,6 @@ exports.compilerStyle = async function(pageEntry) {
   }
 
   const content = await fs.promises.readFile(wxssPath, { encoding: "utf-8" });
-  return postcss([pxtorem({ rootValue: 100 }), renameTag()]).process(content)
+  return postcss([pxtorem({ rootValue: { px: 100, rpx: 100 } }), renameTag()]).process(content)
     .css;
 };
