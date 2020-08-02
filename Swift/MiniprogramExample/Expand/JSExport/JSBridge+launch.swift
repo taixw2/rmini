@@ -26,14 +26,15 @@ extension JSBridge {
     static func launch(option: JSInvokeNativeOption, callback: @escaping (Any?) -> Void) {
         // 把数据传递给 webviewController
         let payload = LaunchPayload(JSON: option.payload as? [String:Any] ?? [:])
+        let miniprogramShareController = MiniprogramShareController.shared
         
         logger.info("launch")
         DispatchQueue(label: "com.miniprogram.wait.created").async {
             while (true) {
-                let miniprogramController = MiniprogramShareController.shared.getMiniprogramController(appId: option.appId!)
+                let miniprogramController = miniprogramShareController.getMiniprogramController(appId: option.appId)
                 if (miniprogramController != nil) {
                     DispatchQueue.main.async {
-                        let miniprogramController = MiniprogramShareController.shared.getMiniprogramController(appId: option.appId!)
+                        let miniprogramController = miniprogramShareController.getMiniprogramController(appId: option.appId)
                         miniprogramController?.ready(pagePath: payload!.url!)
                         
                     }

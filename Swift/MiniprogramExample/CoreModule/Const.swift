@@ -49,6 +49,14 @@ enum WebviewInvokeNative: Int {
     case event = 2
 }
 
+enum PageLifecycle {
+    case onLoad
+    case onShow
+    case onReady
+    case onHide
+    case onUnload
+}
+
 enum InvokeNativeMethod: String {
     // 内部 API
     case setData = "setData"

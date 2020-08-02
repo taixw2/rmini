@@ -31,14 +31,16 @@ class JSInvokeNativeOption: NSObject, ObjectMapper.Mappable {
     
     func invoke() -> Any? {
         var res: Any? = nil
+        var callbacked = false
         method?.load(options: self, { (response) in
             res = response
+            callbacked = true
         })
         
         if !(isSync ?? false) {
             return nil
         }
-        while res == nil {
+        while !callbacked {
             // no get response
         }
         return res

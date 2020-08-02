@@ -49,10 +49,10 @@ class MiniprogramController {
     }
     
     private func pushWebview(pagePath: String) {
-        routeStack.last!.load(pagePath: pagePath)
         let miniprogramController = MiniprogramShareController.shared.getMiniprogramController(appId: self.appId)
         let payload = JSContextPayload(type: InvokeJSCoreType.callPushRouter, payload: ["webviewId":uid - 1, "pageId": pagePath])
         miniprogramController?.JSContext.invoke(payload: payload)
+        routeStack.last!.load(pagePath: pagePath)
     }
     
     // 流程：
@@ -74,14 +74,15 @@ class MiniprogramController {
     }
     
     public func pop(len: Int = 1) {
-        let currentRouteIndex = routeStack.count - len
-        if currentRouteIndex <= 1 {
-            routeStack.removeSubrange(1...routeStack.count - 1)
-        } else {
-            routeStack.removeSubrange(currentRouteIndex...(currentRouteIndex + len))
+        let startIndex = routeStack.count - len
+        let endIndex = routeStack.count
+        for index in (startIndex..<endIndex).reversed() {
+            let webviewController = routeStack.remove(at: index)
+            PageLifecycle.onUnload.load(appId: appId, webviewController: webviewController)
+            webviewController.removeFromParent()
         }
-        logger.info(routeStack)
         rootViewController?.popToViewController(routeStack.last!, animated: true)
+        // 在 JSC 中退出路由
     }
     
     public func launch() {
@@ -91,5 +92,11 @@ class MiniprogramController {
         UIApplication.shared.windows.first!.rootViewController!.present(navigationController, animated: true, completion: nil)
         
         rootViewController = navigationController
+    }
+    
+    public func close() {
+        launched = false
+        // 真正关闭的时候才将所有的 routerStack 清空
+        rootViewController?.dismiss(animated: true, completion: nil)
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import PKHUD
 
 extension WebViewController: UIGestureRecognizerDelegate, UINavigationControllerDelegate  {
     /// 导航栏高度
@@ -50,11 +51,11 @@ extension WebViewController: UIGestureRecognizerDelegate, UINavigationController
         titleBarImageView.addSubview(closeButton)
         
         closeButton.addTargetClosure { _ in
-            logger.info("close miniprogram")
+            MiniprogramShareController.shared.getMiniprogramController(appId: self.appId)?.close()
         }
 
         detailButton.addTargetClosure { _ in
-            logger.info("show detail")
+            HUD.flash(.label("查看小程序详情"), delay: 2.0)
         }
         
         navigationItem.rightBarButtonItems = [buttonView]

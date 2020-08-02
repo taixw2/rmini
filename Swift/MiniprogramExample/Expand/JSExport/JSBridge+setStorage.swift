@@ -9,8 +9,20 @@
 import Foundation
 
 extension JSBridge {
+    // 只支持一种参数形式
+    // setStorage("key", "value")
     static func setStorage(option: JSInvokeNativeOption, callback: @escaping (Any?) -> Void) {
-        logger.info(option.payload)
-        callback("")
+        var storage = UserDefaults.standard.dictionary(forKey: option.appId!) ?? [:]
+        guard let newItem = option.payload as? [Any] else {
+            callback([:])
+            return
+        }
+        guard let key = newItem.first as? String else {
+            callback([:])
+            return
+        }
+        storage[key] = newItem.last
+        callback([key:newItem.last])
+        UserDefaults.standard.setValue(storage, forKey: option.appId!)
     }
 }

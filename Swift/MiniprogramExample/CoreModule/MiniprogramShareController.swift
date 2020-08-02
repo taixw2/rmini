@@ -16,19 +16,34 @@ class MiniprogramShareController {
     
     private var ref: [String: MiniprogramController] = [:]
     
-    func getMiniprogramController(appId: String) -> MiniprogramController? {
-        return ref[appId]
+    private var lock = false
+    
+    init() {
+        logger.info("shared init")
+    }
+    
+    func getMiniprogramController(appId: String?) -> MiniprogramController? {
+        guard let appId = appId else {
+            return nil
+        }
+        if lock {
+            return nil
+        }
+        return self.ref[appId]
     }
     
     
     func launchApp(appId: String) {
+        logger.info("当前打开的 app \(appId)")
         var miniprogram: MiniprogramController? = ref[appId]
         if miniprogram == nil  {
             miniprogram = MiniprogramController(appId: appId)
         }
 
         // TODO: 如果已经运行超过额定数量了，则清空一部分长期未运行的
+        lock = true
         ref[appId] = miniprogram
+        lock = false
         miniprogram?.launch()
     }
 }

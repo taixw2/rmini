@@ -11,8 +11,9 @@ import Foundation
 extension JSBridge {
     static func console(option: JSInvokeNativeOption, callback: @escaping (Any?) -> Void) {
         // 把数据传递给 webviewController
-        let messages = option.payload as? [String] ?? []
-        switch messages.first {
+        let messages = option.payload as? [Any] ?? []
+        let first = messages.first as? String ?? ""
+        switch first {
         case "error":
             logger.error("📲JSCore->Native: \(messages)")
         case "warn":

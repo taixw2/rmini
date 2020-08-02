@@ -34,6 +34,8 @@ class WebViewController: UIViewController {
     
     var htmlContent = ""
     
+    var queryOption: [String: String] = [:]
+    
     init(appId: String, webviewId: Int) {
         self.appId = appId
         self.webviewId = webviewId
@@ -47,6 +49,16 @@ class WebViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        PageLifecycle.onShow.load(appId: appId, webviewController: self)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        PageLifecycle.onHide.load(appId: appId, webviewController: self)
     }
     
     override func viewDidLoad() {
@@ -70,7 +82,7 @@ class WebViewController: UIViewController {
         logger.info("🧲 didload")
         
         if !htmlContent.isEmpty {
-            webview!.loadHTMLString(htmlContent, baseURL: URL(string: "http://localhost"))
+            loadHTML(htmlContent: htmlContent)
         }
     }
     
@@ -79,6 +91,8 @@ class WebViewController: UIViewController {
     }
     
     
+    /// 在 Webview 中执行脚本
+    /// - Parameter script: 脚本内容
     private func run(script: String) {
         webview?.evaluateJavaScript(script) { (data, error) in
             if (error != nil) {
@@ -87,32 +101,50 @@ class WebViewController: UIViewController {
         }
     }
     
+    /// 加载 HTML 内容
+    /// - Parameter htmlContent: html 内容
+    private func loadHTML(htmlContent: String) {
+        webview?.loadHTMLString(htmlContent, baseURL: URL(string: "http://localhost"))
+        PageLifecycle.onReady.load(appId: appId, webviewController: self)
+    }
+    
+    /// Public 加载路径
+    /// - Parameter pagePath: 页面路径
     public func load(pagePath: String) {
+        guard let url = URL(string: pagePath) else {
+            logger.error("路径异常")
+            return
+        }
+        queryOption = url.qsParse
+        let basePath = url.path
+        
         var error: Error?
-        let htmlContent = ReaderController.shared.readFilecontent(appId: appId, filename: pagePath.appending("/index.html"), error: &error)
+        let htmlContent = ReaderController.shared.readFilecontent(appId: appId, filename: basePath.appending("/index.html"), error: &error)
         if error != nil {
             logger.error(error)
             return
         }
-        logger.info("🧲 load")
-        guard let wview = webview else {
+        PageLifecycle.onLoad.load(appId: appId, webviewController: self)
+        if webview == nil {
             self.htmlContent = htmlContent
             return
         }
-        
-        wview.loadHTMLString(htmlContent, baseURL: URL(string: "http://localhost"))
+        loadHTML(htmlContent: htmlContent)
     }
     
+    
+    /// public 更新 Webview
+    /// - Parameter data: JSON 字符串
     public func setData(data: String) {
         let script = "window.__setData(\(data))"
         if !isReady {
             scripts.append(script)
             return
         }
-        
         run(script: script)
     }
     
+    /// vm 实例化之后调用
     public func ready() {
         self.isReady = true
         self.scripts.forEach { (script) in
