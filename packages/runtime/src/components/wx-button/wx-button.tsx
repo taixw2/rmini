@@ -11,7 +11,8 @@ import {
   createEvent,
   TouchTargetEvent,
   eventToNative,
-  same
+  same,
+  log
 } from "../../utils/utils";
 
 @Component({
@@ -79,7 +80,7 @@ export class WxButton implements ComponentInterface {
 
   @Prop() bindTouchend: string;
 
-  @Prop() bindTap: string;
+  @Prop() bindtap: string;
 
   @Prop() bindLongpress: string;
 
@@ -93,7 +94,7 @@ export class WxButton implements ComponentInterface {
 
   @Prop() catchTouchend: string;
 
-  @Prop() catchTap: string;
+  @Prop() catchtap: string;
 
   @Prop() catchLongpress: string;
 
@@ -166,15 +167,16 @@ export class WxButton implements ComponentInterface {
     }
   }
 
+  // XXX: 点击太快会有一次触发丢失
   @Listen("click")
   handlerTap(event: TouchTargetEvent) {
     if (this.disabled) return
-    if (this.catchTap) {
+    if (this.catchtap) {
       event.stopPropagation();
-      eventToNative(this.catchTap, createEvent(event));
+      eventToNative(this.catchtap, createEvent(event));
     }
-    if (this.bindTap) {
-      eventToNative(this.bindTap, createEvent(event));
+    if (this.bindtap) {
+      eventToNative(this.bindtap, createEvent(event));
     }
   }
 }

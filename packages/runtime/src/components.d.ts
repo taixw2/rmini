@@ -39,18 +39,18 @@ export namespace Components {
     interface WxButton {
         "bindLongpress": string;
         "bindLongtap": string;
-        "bindTap": string;
         "bindTouchcancel": string;
         "bindTouchend": string;
         "bindTouchmove": string;
         "bindTouchstart": string;
+        "bindtap": string;
         "catchLongpress": string;
         "catchLongtap": string;
-        "catchTap": string;
         "catchTouchcancel": string;
         "catchTouchend": string;
         "catchTouchmove": string;
         "catchTouchstart": string;
+        "catchtap": string;
         /**
           * 是否禁用
          */
@@ -75,18 +75,18 @@ export namespace Components {
     interface WxImage {
         "bindLongpress": string;
         "bindLongtap": string;
-        "bindTap": string;
         "bindTouchcancel": string;
         "bindTouchend": string;
         "bindTouchmove": string;
         "bindTouchstart": string;
+        "bindtap": string;
         "catchLongpress": string;
         "catchLongtap": string;
-        "catchTap": string;
         "catchTouchcancel": string;
         "catchTouchend": string;
         "catchTouchmove": string;
         "catchTouchstart": string;
+        "catchtap": string;
         "mode": | "scaleToFill"
     | "aspectFit"
     | "aspectFill"
@@ -224,18 +224,18 @@ declare namespace LocalJSX {
     interface WxButton {
         "bindLongpress"?: string;
         "bindLongtap"?: string;
-        "bindTap"?: string;
         "bindTouchcancel"?: string;
         "bindTouchend"?: string;
         "bindTouchmove"?: string;
         "bindTouchstart"?: string;
+        "bindtap"?: string;
         "catchLongpress"?: string;
         "catchLongtap"?: string;
-        "catchTap"?: string;
         "catchTouchcancel"?: string;
         "catchTouchend"?: string;
         "catchTouchmove"?: string;
         "catchTouchstart"?: string;
+        "catchtap"?: string;
         /**
           * 是否禁用
          */
@@ -260,18 +260,18 @@ declare namespace LocalJSX {
     interface WxImage {
         "bindLongpress"?: string;
         "bindLongtap"?: string;
-        "bindTap"?: string;
         "bindTouchcancel"?: string;
         "bindTouchend"?: string;
         "bindTouchmove"?: string;
         "bindTouchstart"?: string;
+        "bindtap"?: string;
         "catchLongpress"?: string;
         "catchLongtap"?: string;
-        "catchTap"?: string;
         "catchTouchcancel"?: string;
         "catchTouchend"?: string;
         "catchTouchmove"?: string;
         "catchTouchstart"?: string;
+        "catchtap"?: string;
         "mode"?: | "scaleToFill"
     | "aspectFit"
     | "aspectFill"
