@@ -7,6 +7,7 @@ Page({
     logs: []
   },
   onLoad: function () {
+    app.refreshLogs()
     this.setData({
       logs: (wx.getStorageSync('logs') || []).map(log => {
         return util.formatTime(new Date(log))

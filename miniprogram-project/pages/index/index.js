@@ -13,13 +13,14 @@ Page({
   },
   //事件处理函数
   bindViewTap: function() {
+    // TODO: 微信小程序需要改成: ../logs/logs
     wx.navigateTo({
       url: '/logs/logs'
     })
   },
   
   onLoad: function () {
-    this.setData({ count: 0 })
+    this.setData({ count: 20 })
   },
 
   add: function(e) {
