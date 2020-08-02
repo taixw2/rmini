@@ -14,6 +14,13 @@
 		B813FC5523B4B0EE00558C5F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813FC5423B4B0EE00558C5F /* Dictionary.swift */; };
 		B813FC5A23B4D23C00558C5F /* MiniprogramShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813FC5923B4D23C00558C5F /* MiniprogramShareController.swift */; };
 		B813FC5C23B4D54900558C5F /* JSBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813FC5B23B4D54900558C5F /* JSBridge.swift */; };
+		B847922E24D5A23B000FCE60 /* WebJSBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B847922D24D5A23B000FCE60 /* WebJSBridge.swift */; };
+		B847923024D5A2DB000FCE60 /* WebJSBridge+lifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B847922F24D5A2DB000FCE60 /* WebJSBridge+lifecycle.swift */; };
+		B847923224D5A319000FCE60 /* WebJSBridge+log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B847923124D5A319000FCE60 /* WebJSBridge+log.swift */; };
+		B847923424D5A33D000FCE60 /* WebJSBridge+event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B847923324D5A33D000FCE60 /* WebJSBridge+event.swift */; };
+		B847923624D5BB05000FCE60 /* JSBridge+navigateTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B847923524D5BB05000FCE60 /* JSBridge+navigateTo.swift */; };
+		B847923824D5C777000FCE60 /* JSBridge+getStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B847923724D5C777000FCE60 /* JSBridge+getStorage.swift */; };
+		B847923A24D5C79A000FCE60 /* JSBridge+setStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B847923924D5C79A000FCE60 /* JSBridge+setStorage.swift */; };
 		B8583FA32397545700F80F95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FA22397545700F80F95 /* AppDelegate.swift */; };
 		B8583FA52397545700F80F95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FA42397545700F80F95 /* SceneDelegate.swift */; };
 		B8583FA72397545700F80F95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FA62397545700F80F95 /* ContentView.swift */; };
@@ -22,9 +29,8 @@
 		B8583FAF2397545A00F80F95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8583FAD2397545900F80F95 /* LaunchScreen.storyboard */; };
 		B8583FBA2397545A00F80F95 /* MiniprogramExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FB92397545A00F80F95 /* MiniprogramExampleTests.swift */; };
 		B8583FC52397545A00F80F95 /* MiniprogramExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FC42397545A00F80F95 /* MiniprogramExampleUITests.swift */; };
-		B8583FD72397906800F80F95 /* JavascriptCoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FD62397906800F80F95 /* JavascriptCoreController.swift */; };
 		B8583FDF2397960500F80F95 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FDE2397960500F80F95 /* WebViewController.swift */; };
-		B8583FEA2397CE9D00F80F95 /* MiniprogramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FE92397CE9D00F80F95 /* MiniprogramModel.swift */; };
+		B8583FEA2397CE9D00F80F95 /* MiniprogramController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8583FE92397CE9D00F80F95 /* MiniprogramController.swift */; };
 		B86E322623B25B7E00B133E7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E322523B25B7E00B133E7 /* String.swift */; };
 		B86E322A23B3042C00B133E7 /* FileSystemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E322923B3042C00B133E7 /* FileSystemController.swift */; };
 		B86E322C23B3090000B133E7 /* LoggerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E322B23B3090000B133E7 /* LoggerController.swift */; };
@@ -33,6 +39,12 @@
 		B86E323323B3142200B133E7 /* MiniprogramRunningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E323223B3142200B133E7 /* MiniprogramRunningController.swift */; };
 		B86E324023B48C2300B133E7 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86E323F23B48C2300B133E7 /* WebViewModel.swift */; };
 		B86E324223B49F9900B133E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B86E324123B49F9900B133E7 /* Main.storyboard */; };
+		B8E2903D24D470150042C42E /* JSBridge+setData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2903C24D470150042C42E /* JSBridge+setData.swift */; };
+		B8E2903F24D473330042C42E /* JSBridge+launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2903E24D473330042C42E /* JSBridge+launch.swift */; };
+		B8E2904324D50D4E0042C42E /* WebViewController+NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2904224D50D4E0042C42E /* WebViewController+NavigationController.swift */; };
+		B8E2904524D51B590042C42E /* UIButtion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2904424D51B590042C42E /* UIButtion.swift */; };
+		B8E2904724D575E90042C42E /* JSBridge+console.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2904624D575E90042C42E /* JSBridge+console.swift */; };
+		B8E2904924D59ECB0042C42E /* WebviewInvokeNativeOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2904824D59ECB0042C42E /* WebviewInvokeNativeOption.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +74,13 @@
 		B813FC5423B4B0EE00558C5F /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		B813FC5923B4D23C00558C5F /* MiniprogramShareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniprogramShareController.swift; sourceTree = "<group>"; };
 		B813FC5B23B4D54900558C5F /* JSBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSBridge.swift; sourceTree = "<group>"; };
+		B847922D24D5A23B000FCE60 /* WebJSBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebJSBridge.swift; sourceTree = "<group>"; };
+		B847922F24D5A2DB000FCE60 /* WebJSBridge+lifecycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebJSBridge+lifecycle.swift"; sourceTree = "<group>"; };
+		B847923124D5A319000FCE60 /* WebJSBridge+log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebJSBridge+log.swift"; sourceTree = "<group>"; };
+		B847923324D5A33D000FCE60 /* WebJSBridge+event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebJSBridge+event.swift"; sourceTree = "<group>"; };
+		B847923524D5BB05000FCE60 /* JSBridge+navigateTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSBridge+navigateTo.swift"; sourceTree = "<group>"; };
+		B847923724D5C777000FCE60 /* JSBridge+getStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSBridge+getStorage.swift"; sourceTree = "<group>"; };
+		B847923924D5C79A000FCE60 /* JSBridge+setStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSBridge+setStorage.swift"; sourceTree = "<group>"; };
 		B8583F9F2397545700F80F95 /* MiniprogramExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniprogramExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8583FA22397545700F80F95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8583FA42397545700F80F95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,9 +95,8 @@
 		B8583FC02397545A00F80F95 /* MiniprogramExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniprogramExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8583FC42397545A00F80F95 /* MiniprogramExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniprogramExampleUITests.swift; sourceTree = "<group>"; };
 		B8583FC62397545A00F80F95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8583FD62397906800F80F95 /* JavascriptCoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavascriptCoreController.swift; sourceTree = "<group>"; };
 		B8583FDE2397960500F80F95 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		B8583FE92397CE9D00F80F95 /* MiniprogramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniprogramModel.swift; sourceTree = "<group>"; };
+		B8583FE92397CE9D00F80F95 /* MiniprogramController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniprogramController.swift; sourceTree = "<group>"; };
 		B86E322523B25B7E00B133E7 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		B86E322923B3042C00B133E7 /* FileSystemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemController.swift; sourceTree = "<group>"; };
 		B86E322B23B3090000B133E7 /* LoggerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerController.swift; sourceTree = "<group>"; };
@@ -87,6 +105,12 @@
 		B86E323223B3142200B133E7 /* MiniprogramRunningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniprogramRunningController.swift; sourceTree = "<group>"; };
 		B86E323F23B48C2300B133E7 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		B86E324123B49F9900B133E7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B8E2903C24D470150042C42E /* JSBridge+setData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSBridge+setData.swift"; sourceTree = "<group>"; };
+		B8E2903E24D473330042C42E /* JSBridge+launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSBridge+launch.swift"; sourceTree = "<group>"; };
+		B8E2904224D50D4E0042C42E /* WebViewController+NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WebViewController+NavigationController.swift"; sourceTree = "<group>"; };
+		B8E2904424D51B590042C42E /* UIButtion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtion.swift; sourceTree = "<group>"; };
+		B8E2904624D575E90042C42E /* JSBridge+console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSBridge+console.swift"; sourceTree = "<group>"; };
+		B8E2904824D59ECB0042C42E /* WebviewInvokeNativeOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebviewInvokeNativeOption.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				048E764124D42B030007D8DB /* JSInvokeNativeOption.swift */,
+				B8E2904824D59ECB0042C42E /* WebviewInvokeNativeOption.swift */,
 			);
 			path = ObjectMapper;
 			sourceTree = "<group>";
@@ -136,6 +161,12 @@
 			isa = PBXGroup;
 			children = (
 				B813FC5B23B4D54900558C5F /* JSBridge.swift */,
+				B8E2903C24D470150042C42E /* JSBridge+setData.swift */,
+				B8E2904624D575E90042C42E /* JSBridge+console.swift */,
+				B8E2903E24D473330042C42E /* JSBridge+launch.swift */,
+				B847923524D5BB05000FCE60 /* JSBridge+navigateTo.swift */,
+				B847923724D5C777000FCE60 /* JSBridge+getStorage.swift */,
+				B847923924D5C79A000FCE60 /* JSBridge+setStorage.swift */,
 			);
 			path = JSExport;
 			sourceTree = "<group>";
@@ -170,8 +201,6 @@
 				B8583FE22397CCD000F80F95 /* Model */,
 				B8583FA22397545700F80F95 /* AppDelegate.swift */,
 				B8583FA42397545700F80F95 /* SceneDelegate.swift */,
-				B8583FDE2397960500F80F95 /* WebViewController.swift */,
-				B8583FD62397906800F80F95 /* JavascriptCoreController.swift */,
 				B8583FA62397545700F80F95 /* ContentView.swift */,
 				B86E322E23B30A0D00B133E7 /* Launch.swift */,
 				B8583FA82397545900F80F95 /* Assets.xcassets */,
@@ -213,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				048E764024D42AC40007D8DB /* ObjectMapper */,
-				B8583FE92397CE9D00F80F95 /* MiniprogramModel.swift */,
 				B86E323F23B48C2300B133E7 /* WebViewModel.swift */,
 				048E763E24D421950007D8DB /* JSContextModal.swift */,
 			);
@@ -225,6 +253,7 @@
 			children = (
 				B86E322523B25B7E00B133E7 /* String.swift */,
 				B813FC5423B4B0EE00558C5F /* Dictionary.swift */,
+				B8E2904424D51B590042C42E /* UIButtion.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -232,6 +261,7 @@
 		B86E322723B303E600B133E7 /* Expand */ = {
 			isa = PBXGroup;
 			children = (
+				B8E2904A24D5A0FC0042C42E /* WebviewExport */,
 				B813FC5623B4D19D00558C5F /* JSExport */,
 				B86E322823B3040100B133E7 /* Util */,
 				B86E322423B25B6700B133E7 /* Extension */,
@@ -252,6 +282,9 @@
 		B86E322D23B309ED00B133E7 /* CoreModule */ = {
 			isa = PBXGroup;
 			children = (
+				B8583FE92397CE9D00F80F95 /* MiniprogramController.swift */,
+				B8583FDE2397960500F80F95 /* WebViewController.swift */,
+				B8E2904224D50D4E0042C42E /* WebViewController+NavigationController.swift */,
 				B86E323023B30A2300B133E7 /* Const.swift */,
 				B86E323223B3142200B133E7 /* MiniprogramRunningController.swift */,
 				B813FC5923B4D23C00558C5F /* MiniprogramShareController.swift */,
@@ -265,6 +298,17 @@
 				2265B85D7C672ACF074AA593 /* Pods_MiniprogramExample.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8E2904A24D5A0FC0042C42E /* WebviewExport */ = {
+			isa = PBXGroup;
+			children = (
+				B847922D24D5A23B000FCE60 /* WebJSBridge.swift */,
+				B847922F24D5A2DB000FCE60 /* WebJSBridge+lifecycle.swift */,
+				B847923124D5A319000FCE60 /* WebJSBridge+log.swift */,
+				B847923324D5A33D000FCE60 /* WebJSBridge+event.swift */,
+			);
+			path = WebviewExport;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -461,25 +505,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B847923624D5BB05000FCE60 /* JSBridge+navigateTo.swift in Sources */,
 				B8583FA32397545700F80F95 /* AppDelegate.swift in Sources */,
 				B8583FDF2397960500F80F95 /* WebViewController.swift in Sources */,
 				B86E322A23B3042C00B133E7 /* FileSystemController.swift in Sources */,
+				B847923424D5A33D000FCE60 /* WebJSBridge+event.swift in Sources */,
 				B86E322F23B30A0D00B133E7 /* Launch.swift in Sources */,
 				B813FC5523B4B0EE00558C5F /* Dictionary.swift in Sources */,
 				B8583FA52397545700F80F95 /* SceneDelegate.swift in Sources */,
 				04B636FC24D41EAE00AE3195 /* ReaderController.swift in Sources */,
+				B8E2904524D51B590042C42E /* UIButtion.swift in Sources */,
+				B8E2903D24D470150042C42E /* JSBridge+setData.swift in Sources */,
+				B847923024D5A2DB000FCE60 /* WebJSBridge+lifecycle.swift in Sources */,
+				B847923A24D5C79A000FCE60 /* JSBridge+setStorage.swift in Sources */,
+				B847923824D5C777000FCE60 /* JSBridge+getStorage.swift in Sources */,
+				B8E2903F24D473330042C42E /* JSBridge+launch.swift in Sources */,
 				B86E323323B3142200B133E7 /* MiniprogramRunningController.swift in Sources */,
 				B86E323123B30A2300B133E7 /* Const.swift in Sources */,
 				B813FC5C23B4D54900558C5F /* JSBridge.swift in Sources */,
+				B847922E24D5A23B000FCE60 /* WebJSBridge.swift in Sources */,
 				B86E322C23B3090000B133E7 /* LoggerController.swift in Sources */,
-				B8583FEA2397CE9D00F80F95 /* MiniprogramModel.swift in Sources */,
+				B8583FEA2397CE9D00F80F95 /* MiniprogramController.swift in Sources */,
 				B813FC5A23B4D23C00558C5F /* MiniprogramShareController.swift in Sources */,
 				B8583FA72397545700F80F95 /* ContentView.swift in Sources */,
 				048E763F24D421950007D8DB /* JSContextModal.swift in Sources */,
 				B86E324023B48C2300B133E7 /* WebViewModel.swift in Sources */,
+				B8E2904724D575E90042C42E /* JSBridge+console.swift in Sources */,
 				B86E322623B25B7E00B133E7 /* String.swift in Sources */,
+				B847923224D5A319000FCE60 /* WebJSBridge+log.swift in Sources */,
 				048E764224D42B030007D8DB /* JSInvokeNativeOption.swift in Sources */,
-				B8583FD72397906800F80F95 /* JavascriptCoreController.swift in Sources */,
+				B8E2904324D50D4E0042C42E /* WebViewController+NavigationController.swift in Sources */,
+				B8E2904924D59ECB0042C42E /* WebviewInvokeNativeOption.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

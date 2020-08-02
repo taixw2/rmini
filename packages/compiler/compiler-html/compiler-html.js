@@ -1,4 +1,3 @@
-const fs = require("fs");
 const posthtml = require("posthtml");
 const { builtInComponents } = require("../utils/constants");
 const { delProp } = require("../utils/utils");
@@ -11,6 +10,15 @@ const COMP_VAL_REG = /\{\{(.*?)\}\}/;
 function getInterpolationExpression(value) {
   if (!COMP_VAL_REG.test(value)) return value;
   return `'${value.replace(/\{\{(.*?)\}\}/g, `' + $1 + '`)}'`;
+}
+
+/**
+ * 获取插值表达式
+ * @param {string} value
+ */
+function getInterpolationExpressionWithFor(value) {
+  if (!COMP_VAL_REG.test(value)) return value;
+  return value.replace(/\{\{(.*?)\}\}/g, '$1');
 }
 
 /**
@@ -41,10 +49,10 @@ function compilerAttributeName(attributes) {
   /**
    * for 需要用到 item 以及 index
    */
-  const forValue = getInterpolationExpression(attributes["wx:for"]);
+  const forValue = getInterpolationExpressionWithFor(attributes["wx:for"]);
   const forItemKeyName = attributes["wx:for-item"] || "item";
   const forIndexKeyName = attributes["wx:for-index"] || "index";
-  replaceAttr(attributes, "wx:for", "v-for", `(${forItemKeyName}, ${forIndexKeyName}) in (${forValue})`);
+  replaceAttr(attributes, "wx:for", "v-for", `(${forItemKeyName}, ${forIndexKeyName}) in ${forValue}`);
   replaceAttr(attributes, "wx:key", "v-bind:key");
   replaceAttr(attributes, "wx:for-item");
   replaceAttr(attributes, "wx:for-index");
@@ -86,8 +94,7 @@ function compilerAttributeValue(attributes) {
 function postwxml(htmlTree) {
   builtInComponents.forEach((componentName) => {
     htmlTree.match({ tag: componentName }, (matchNode) => {
-      matchNode.tag = matchNode.tag !== "block" ? "wx-" + matchNode.tag : 'template'
-
+      matchNode.tag = matchNode.tag !== "block" ? "wx-" + matchNode.tag : "template";
       if (!matchNode.attrs) return matchNode;
       compilerAttributeName(matchNode.attrs);
       compilerAttributeValue(matchNode.attrs);

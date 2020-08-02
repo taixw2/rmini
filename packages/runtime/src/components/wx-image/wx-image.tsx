@@ -82,7 +82,7 @@ export class WxImage implements ComponentInterface {
 
   @Prop() bindTouchend: string;
 
-  @Prop() bindTap: string;
+  @Prop() bindtap: string;
 
   @Prop() bindLongpress: string;
 
@@ -96,7 +96,7 @@ export class WxImage implements ComponentInterface {
 
   @Prop() catchTouchend: string;
 
-  @Prop() catchTap: string;
+  @Prop() catchtap: string;
 
   @Prop() catchLongpress: string;
 
@@ -164,12 +164,12 @@ export class WxImage implements ComponentInterface {
 
   @Listen("click")
   handlerTap(event: TouchTargetEvent) {
-    if (this.catchTap) {
+    if (this.catchtap) {
       event.stopPropagation();
-      eventToNative(this.catchTap, createEvent(event));
+      eventToNative(this.catchtap, createEvent(event));
     }
-    if (this.bindTap) {
-      eventToNative(this.bindTap, createEvent(event));
+    if (this.bindtap) {
+      eventToNative(this.bindtap, createEvent(event));
     }
   }
 }

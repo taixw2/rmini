@@ -11,9 +11,10 @@ import ObjectMapper
 
 class JSInvokeNativeOption: NSObject, ObjectMapper.Mappable {
     var sessionId: String?
-    var isSync: String?
-    var method: String?
-    var webviewId: String?
+    var appId: String?
+    var isSync: Bool?
+    var method: InvokeNativeMethod?
+    var webviewId: Int?
     var payload: Any?
     
     required init?(map: Map) {
@@ -25,9 +26,21 @@ class JSInvokeNativeOption: NSObject, ObjectMapper.Mappable {
         method <- map["method"]
         webviewId <- map["webviewId"]
         payload <- map["payload"]
+        appId <- map["appId"]
     }
     
-    func invoke() {
+    func invoke() -> Any? {
+        var res: Any? = nil
+        method?.load(options: self, { (response) in
+            res = response
+        })
         
+        if !(isSync ?? false) {
+            return nil
+        }
+        while res == nil {
+            // no get response
+        }
+        return res
     }
 }

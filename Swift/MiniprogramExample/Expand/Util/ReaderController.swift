@@ -12,7 +12,8 @@ class ReaderController {
     static let shared: ReaderController = ReaderController()
     
     func readFilecontent(appId: String, filename: String, error: inout Error?) -> String {
-        let filePath = AppConfig.miniprogramDir.appending(appId).appending("/").appending(filename)
+        let name = filename.hasPrefix("/") ? filename : "/\(filename)"
+        let filePath = AppConfig.miniprogramDir.appending(appId).appending(name)
         do {
             return try String(contentsOfFile: filePath, encoding: .utf8)
         } catch let err {

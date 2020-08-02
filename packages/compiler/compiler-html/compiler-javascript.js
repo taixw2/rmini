@@ -1,4 +1,4 @@
-const reg = /\{\{([\.|\w|\d]+?)\}\}/g;
+const reg = /\{\{([.|\w|\d]+?)\}\}/g;
 
 /**
  * pre script
@@ -21,6 +21,7 @@ window.__Def = function (key, value) {
  * @param {*} interpolationExpression
  */
 function recombinObject(interpolationExpression) {
+  let current;
   let root = (current = {});
   const keys = interpolationExpression.split(".");
   const len = keys.length;
@@ -35,7 +36,7 @@ function recombinObject(interpolationExpression) {
 /**
  * 提取所有插值表达式中用到的响应式属性
  * 通过 __Def 传给 runtime 中的 Vue 实例
- * @param {*} wxmlContent 
+ * @param {*} wxmlContent
  */
 exports.compilerJavascript = function(wxmlContent) {
   let script = prefixScript;

@@ -14,22 +14,21 @@ class MiniprogramShareController {
     
     static let shared = MiniprogramShareController()
     
-    private var ref: [String: MiniprogramModal] = [:]
+    private var ref: [String: MiniprogramController] = [:]
     
-    private var currentAppId: String!
-    
-    var miniprogram: MiniprogramModal! {
-        return ref[currentAppId]
+    func getMiniprogramController(appId: String) -> MiniprogramController? {
+        return ref[appId]
     }
     
+    
     func launchApp(appId: String) {
-        currentAppId = appId        
-        if let miniprogram = self.ref[appId] {
-            miniprogram.launchApp()
+        var miniprogram: MiniprogramController? = ref[appId]
+        if miniprogram == nil  {
+            miniprogram = MiniprogramController(appId: appId)
         }
 
         // TODO: 如果已经运行超过额定数量了，则清空一部分长期未运行的
-        ref[appId] = MiniprogramModal(appId: appId)
-        ref[appId]!.launchApp()
+        ref[appId] = miniprogram
+        miniprogram?.launch()
     }
 }

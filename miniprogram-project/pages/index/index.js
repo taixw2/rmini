@@ -9,12 +9,12 @@ Page({
       nickName: '1874',
       avatarUrl: 'http://pic.sc.chinaz.com/files/pic/pic9/202007/bpic20762.jpg'
     },
-    count: ''
+    count: 0
   },
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '/logs/logs'
     })
   },
   
@@ -23,7 +23,6 @@ Page({
   },
 
   add: function(e) {
-    console.log(e)
     this.setData({ count: this.data.count + 1 })
   },
 

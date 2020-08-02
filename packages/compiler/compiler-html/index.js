@@ -11,7 +11,7 @@ const template = {
   <html lang="en" style="font-size: __FONT_SIZE__px">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=—__SCALE__,maximum-scale=—__SCALE__,minimum-scale=—__SCALE__">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=__SCALE__,maximum-scale=__SCALE__,minimum-scale=__SCALE__">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
   `,
   body: `
@@ -32,7 +32,7 @@ const template = {
 
 exports.compilerHtml = function(entryDir, appConfig, projectConfig) {
   if (!appConfig.pages || !appConfig.pages.length) {
-    throw new Error('no page fount')
+    throw new Error("no page fount");
   }
 
   appConfig.pages.forEach(async (pageEntry) => {
@@ -42,11 +42,11 @@ exports.compilerHtml = function(entryDir, appConfig, projectConfig) {
     const originalWxmlContent = await fs.promises.readFile(wxmlPath, { encoding: "utf-8" });
     const styleContent = await compilerStyle(pageEntry);
     const scriptContent = compilerJavascript(originalWxmlContent);
-    const wxmlContent = await compilerHtml(originalWxmlContent)
+    const wxmlContent = await compilerHtml(originalWxmlContent);
 
     let content = "";
     content += template.head;
-    content += `<style>${styleContent}</style>\n`;
+    content += `<style>body { font-size: 0.24rem }\n${styleContent}</style>\n`;
     content += `<script src="https://unpkg.com/@rmini/runtime@${projectConfig.libVersion}"></script>\n`;
     content += template.body;
     content += wxmlContent;
@@ -54,17 +54,15 @@ exports.compilerHtml = function(entryDir, appConfig, projectConfig) {
     content += scriptContent;
     content += template.tail;
 
-    const entry = path.join(entryDir, pageEntry)
+    const entry = path.join(entryDir, pageEntry);
     try {
-      await fs.promises.mkdir(entry, { recursive: true })
+      await fs.promises.mkdir(entry, { recursive: true });
     } catch (error) {
-      // 
+      //
     }
 
-    fs.promises.writeFile(
-      path.join(entryDir, pageEntry, "index.html"),
-      content,
-      "utf-8"
-    ).catch(console.error)
+    fs.promises
+      .writeFile(path.join(entryDir, pageEntry, "index.html"), content, "utf-8")
+      .catch(console.error);
   });
 };

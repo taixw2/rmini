@@ -21,7 +21,7 @@ exports.setup = async function() {
   try {
     fs.accessSync(projectConfigPath);
   } catch (error) {
-    console.error("project.config.json");
+    console.error("当前目录缺少 project.config.json");
   }
 
   const appConfig = require(appConfigPath);
@@ -39,5 +39,4 @@ exports.setup = async function() {
   // TODO: 上传到服务器
   console.log("output", entryDir);
   console.log("output.zip", filename);
-  // 提交到 OSS http://localhost:56711
 };

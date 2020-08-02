@@ -8,7 +8,7 @@ const terser = require("rollup-plugin-terser");
 
 const cwd = process.cwd();
 
-const { getTemplateEnterPath } = require("./resolve-entry");
+const { createTemplateEnter } = require("./resolve-entry");
 const { compilerPolyfill } = require("./polyfill");
 /**
  * 编译所有的 javascript 文件
@@ -22,7 +22,7 @@ exports.compilerJavascript = async function(entryDir, appConfig, projectConfig) 
   /**
    * 将 AppConfig 中的 pages 构成一个入口文件
    */
-  const templateEntry = await getTemplateEnterPath(appConfig);
+  const templateEntry = await createTemplateEnter(appConfig);
   const polyfillCode = await compilerPolyfill(appConfig, projectConfig);
 
   const rollupPlugins = [resolve(), commonjs()];
@@ -40,9 +40,12 @@ exports.compilerJavascript = async function(entryDir, appConfig, projectConfig) 
             },
           ],
         ],
-        plugins: ["@babel/plugin-proposal-nullish-coalescing-operator", "@babel/plugin-proposal-optional-chaining"],
+        plugins: [
+          "@babel/plugin-proposal-nullish-coalescing-operator",
+          "@babel/plugin-proposal-optional-chaining",
+        ],
         exclude: "node_modules/**",
-      })
+      }),
     );
   }
 
@@ -58,7 +61,7 @@ exports.compilerJavascript = async function(entryDir, appConfig, projectConfig) 
   const injectPageId = {
     name: "__inject_pageid",
     transform(code, id) {
-      if (!/pages/.test(id)) return null;
+      if (!/pages/.test(id)) return { code };
       const pageId = id.substr(cwd.length).replace(/\.js$/, "");
       return { code: "Page.__pageId = '" + pageId + "'\n" + code };
     },
@@ -78,8 +81,15 @@ function rollupCompiler(entry, plugins, polyfill) {
     })
     .then((bundler) => {
       return bundler.generate({
+        strict: false,
         format: "iife",
-        intro: "const { getApp, wx, App, Page, global, console } = __polyfill__",
+        intro: `
+        var getApp = global.__polyfill__.getApp;
+        var wx = global.__polyfill__.wx;
+        var App = global.__polyfill__.App;
+        var Page = global.__polyfill__.Page;
+        var console = global.__polyfill__.console;
+        `,
         outro: "",
       });
     })

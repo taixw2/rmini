@@ -3,6 +3,7 @@
  */
 
 import { createSessionId, noop } from "./util";
+import { getProjectConfig } from "./store";
 
 const jsbridge = () => __JSB;
 
@@ -23,13 +24,17 @@ export const invoke = (method, sync, webviewId, option) => {
   const sessionId = createSessionId();
   keepCbs(sessionId, option);
 
-  return jsbridge()?.invoke(JSON.stringify({
-    sessionId,
-    sync,
-    method,
-    webviewId,
-    payload: option,
-  }));
+  let appId = getProjectConfig().appid;
+  return jsbridge()?.invoke(
+    JSON.stringify({
+      sessionId,
+      appId,
+      sync,
+      method,
+      webviewId,
+      payload: option,
+    }),
+  );
 };
 
 /**
@@ -40,5 +45,5 @@ export const callCbs = ({ sessionId, status, payload }) => {
   statusGroupCallback[status](payload);
   statusGroupCallback.compalte(payload);
 
-  cbs.delete(sessionId)
+  cbs.delete(sessionId);
 };

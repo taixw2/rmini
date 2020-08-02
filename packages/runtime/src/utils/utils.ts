@@ -11,19 +11,50 @@ export function same<T>(props: T, value: any): value is T {
 }
 
 /**
+ * 调用原生的方法，与原生定义一致
+ */
+export const enum InvokeNativeType {
+  log = 0,
+  lifecycle = 1,
+  event = 2
+}
+
+/**
+ * 
+ * @param type 
+ * @param payload 
+ */
+export function invokeNative(type: InvokeNativeType, payload: any) {
+  const webkit = Reflect.get(window, "webkit");
+  
+  if (!webkit) {
+    return
+  }
+  webkit.messageHandlers.trigger.postMessage(
+    JSON.stringify({
+      type,
+      payload
+    })
+  );
+}
+
+export function log(...messages: any[]) {
+  invokeNative(InvokeNativeType.log, messages);
+  if (typeof console !== "undefined") {
+    console.log(...messages)
+  }
+}
+
+/**
  * 将事件发送给原生
  * @param bindFunctionName
  * @param data
  */
 export function eventToNative(bindFunctionName, payload) {
-  const webkit = Reflect.get(window, "webkit");
-  webkit.messageHandlers.triggerEvent.postMessage(
-    JSON.stringify({
-      method: bindFunctionName,
-      webviewId: Reflect.get(window, "__webviewId"),
-      payload
-    })
-  );
+  invokeNative(InvokeNativeType.event, {
+    method: bindFunctionName,
+    payload
+  });
 }
 
 export function getTouchs(touchs: TouchList) {
