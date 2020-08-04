@@ -18,12 +18,12 @@
 
 ## 快速启动
 
-### 1. 在跟目录运行(时间会比较久)
+### 1. 在根目录安装依赖(时间会比较久)
 ```bash
 # 安装 JS 依赖
 yarn
 ```
-### 2. 进入 packages/Swift 运行:
+### 2. 进入 packages/Swift 安装 Native 依赖:
 ```bash
 cd packages/Swift
 
@@ -35,8 +35,6 @@ pod install
 ```bash
 cd packages/compiler
 yarn link # or npm link 注册 rmini命令行工具
-
-# 如果使用 link 可以直接用 node 运行
 ```
 
 ### 4. 编译小程序项目
@@ -45,8 +43,7 @@ cd miniprogram-project
 
 # 编译项目
 rmini 
-# or node ../packages/compiler/cli/index.js
-
+# 如果不使用 rmini, 则: node ../packages/compiler/cli/index.js
 # 获取到编译后的源文件
 ```
 
