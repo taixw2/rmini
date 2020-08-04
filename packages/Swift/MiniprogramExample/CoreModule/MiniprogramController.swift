@@ -38,6 +38,7 @@ class MiniprogramController {
         }
         JSContext = JSContextModal(javascriptContent: scriptContent)
         //        // 初始化 webview
+        // TODO: 这里是否先调用 launch 再初始化 webview?
         craeteWebview()
         //        // 把 webviewId 传给 init, init 再传回来?
         JSContext.invoke(payload: JSContextPayload(type: InvokeJSCoreType.callInitial, payload: ["webviewId":uid]))

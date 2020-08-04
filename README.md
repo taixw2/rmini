@@ -1,51 +1,84 @@
-# 一个简单的小程序运行时
+# 一个简单的微信小程序运行时
+
+## 项目要求/支持
+
+- xcode
+- 目前仅支持 iOS
+
+## 项目结构
+
+- miniprogram-project
+    - 微信开发工具创建的小程序项目
+- packages/compiler
+    - 编译相关，负责将小程序源文件编译成可运行的模块 (JSCore)
+- packages/runtime
+    - 基础组件 + vue 渲染模块 (Webview)
+- packages/swift
+    - 原生代码块 (Native)
+
+## 快速启动
+
+### 1. 在跟目录运行(时间会比较久)
+```bash
+# 安装 JS 依赖
+yarn
+```
+### 2. 进入 packages/Swift 运行:
+```bash
+cd packages/Swift
+
+# 安装 swift 依赖
+# 如果没有安装 cocospod 需要先安装
+pod install
+```
+### 3. 将编译命令行工具 link 到全局
+```bash
+cd packages/compiler
+yarn link # or npm link 注册 rmini命令行工具
+
+# 如果使用 link 可以直接用 node 运行
+```
+
+### 4. 编译小程序项目
+```bash
+cd miniprogram-project
+
+# 编译项目
+rmini 
+# or node ../packages/compiler/cli/index.js
+
+# 获取到编译后的源文件
+```
+
+### 5. 将编译后的文件放在服务器中，用于在 Native 中下载
+```bash
+# 为了简单起见，直接在本地起一个服务器
+
+serve /var/folder/xxx/xxx/wxc8ecefecf650b4ff/../
+```
+
+### 6. 启动 App
+
+1. 进入 packages/Swift 项目
+2. 打开 MiniprogramExample.xcworkspace 文件
+3. 运行 App 修改服务器地址以及 Appid, 或修改 ContentView 中的服务器以及 Appid
+
+## 流程简介
+
+> 这是一张从小程序官方薅来的图
+
+![](./asserts/4-1.ad156d1c.png)
+
+1. 小程序启动后，通过 JSCore 运行脚本，并且注入 bridge (CoreModule/MiniprogramController.swift:39)
+2. 初始化一个 Webview, 并调用 JSCore 中的 init, 运行 **onLaunch** 生命周期
+3. JSCore 中 init 后，将首页返回给原生
+4. 原生根据首页路径找出对应的 HTML 文件，并用 Webview 渲染
+5. 加载 HTML 前调用 **onLoad** 生命周期
+6. 将 HTML 文件加载后调用 **onReady** 生命周期
+7. 原生的 ViewController 调用 viewDidAppear 生命周期时调用 **onShow**
+8. 原生的 ViewController 调用 viewDidDisappear 生命周期时调用 **onHide**
+9. 页面退出后调用 **onUnload** 生命周期
 
 ## 效果图
 
-![效果图](./des.gif)
-
-## 流程梳理
-
-### 初始化
-1. 点开小程序
-2. 下载小程序到本地
-3. 编译所有的 html, 设置 font-size 以及 viewport
-3. 执行小程序的脚本 (main.js)
-4. 给脚本发送 init 指令，调用 onLaunch
-5. 脚本发送给原生，当前启动的页面 (通过 pageId)
-6. 记录当前的 url, 解析后，在第 9 步传入
-6. 通过 pageId 找到对应的 html
-7. 初始化 webview (渲染 html)
-    1. 创建 webviewId, 每一个 webview 都有一个 ID, 一个 page 可能被推入多次，可能存在 多个 webviewId 对应一个 pageId
-    2. 给 Html 中注入 webviewId
-    3. 把 webviewId 记录到当前栈顶
-8. 以 webviewId 和 pageId 作为参数实例化一个 PageController
-9. 调用 pageController 的 onLoad
-10. 把 webview 推入到路由中
-11. 调用 pageController以及 app 的 onShow
-
-### 进入新页面
-1. 调用 navigator
-2. 调用当前 webviewId 的 onHide 方法
-3. 执行初始化第 5-10步 (pageId 就是 navigator 的 url)
-4. 调用 pageController 的 onShow
-
-## 退出页面
-1. 调用当前 webviewId 的 onUnload 方法
-2. 把当前栈 pop
-3. 调用当前 webviewId 的 onShow 方法
-
-### 更新
-1. 用户触发某个事件 (web component中)
-2. 事件转发到原生 (方法名， webviewId, 事件信息)
-3. 原生通过 webviewId 派发到对应的 pageController, 并且调用对应的方法
-4. pageController 如果调用了 setData, 将 setData 事件派发到原生 (webviewId, data)
-5. 原生通过 webviewId 找到对应的 webview, 将 data 采用 Vue.set 传入 (所有的 data 必须在使用前先被 Vue 转换成生命式对象)
-6. Vue 更新页面
-
-### 备注
-1. webviewId： 用于通信的标识
-    1. JSCore 中，用来管理实例化出来的 pageController
-    2. 原生中用来管理对象的 WebviewController
-    3. webview 中用来与原生通信
-2. pageId: 用于找到对应的 html，以及脚本中对应的 PageController
+![效果图](./asserts/des.gif)
