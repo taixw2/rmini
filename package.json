@@ -19,12 +19,20 @@
     "eslint-plugin-prettier": "^2.1.2",
     "husky": "^3.0.9",
     "lerna": "^3.16.5",
+    "lint-staged": "^10.2.11",
     "prettier": "^1.4.4"
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "packages/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {}
 }
