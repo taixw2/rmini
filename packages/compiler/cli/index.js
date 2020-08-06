@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const pkg = require('../package.json')
+const pkg = require("../package.json");
 
-console.log('Hello~ welcome to rmini', pkg.version)
+console.log("Hello~ welcome to rmini", pkg.version);
 
-require('../bin/index').setup()
+require("../bin/index").setup();

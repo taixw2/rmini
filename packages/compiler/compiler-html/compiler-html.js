@@ -18,7 +18,7 @@ function getInterpolationExpression(value) {
  */
 function getInterpolationExpressionWithFor(value) {
   if (!COMP_VAL_REG.test(value)) return value;
-  return value.replace(/\{\{(.*?)\}\}/g, '$1');
+  return value.replace(/\{\{(.*?)\}\}/g, "$1");
 }
 
 /**

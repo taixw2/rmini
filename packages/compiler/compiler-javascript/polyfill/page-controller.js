@@ -38,7 +38,7 @@ export const initPage = function(pageOption) {
     // JSCore 调用 setData 后，传递给原生
     // 原生再将 setData 传给 对应的 webview
     setData(data) {
-      this.data = { ...this.data, ...data }
+      this.data = { ...this.data, ...data };
       invoke("setData", false, this.webviewId, this.data);
     }
 

@@ -61,8 +61,6 @@ exports.compilerHtml = function(entryDir, appConfig, projectConfig) {
       //
     }
 
-    fs.promises
-      .writeFile(path.join(entryDir, pageEntry, "index.html"), content, "utf-8")
-      .catch(console.error);
+    fs.promises.writeFile(path.join(entryDir, pageEntry, "index.html"), content, "utf-8").catch(console.error);
   });
 };

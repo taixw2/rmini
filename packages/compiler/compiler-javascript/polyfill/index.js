@@ -30,10 +30,7 @@ exports.compilerPolyfill = (AppConfig, ProjectConfig) => {
             },
           ],
         ],
-        plugins: [
-          "@babel/plugin-proposal-nullish-coalescing-operator",
-          "@babel/plugin-proposal-optional-chaining",
-        ],
+        plugins: ["@babel/plugin-proposal-nullish-coalescing-operator", "@babel/plugin-proposal-optional-chaining"],
         exclude: "node_modules/**",
       }),
     ],

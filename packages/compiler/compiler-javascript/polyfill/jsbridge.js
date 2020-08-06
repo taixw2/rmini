@@ -33,7 +33,7 @@ export const invoke = (method, sync, webviewId, option) => {
       method,
       webviewId,
       payload: option,
-    }),
+    })
   );
 };
 

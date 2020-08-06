@@ -15,4 +15,4 @@ export { nativeInvoke } from "./export-native";
  */
 export const global = {};
 
-export const console = _console
+export const console = _console;

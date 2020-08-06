@@ -1,7 +1,7 @@
 import * as store from "./store";
 import * as jsbridge from "./jsbridge";
 import { callHook } from "./util";
-import { console } from "./console"
+import { console } from "./console";
 
 /**
  * 原生用来调用 JS 的入口
@@ -73,13 +73,13 @@ function callCbs(option) {
  * @param {{ webviewId: string, pageId: string }} option
  */
 function pushRouter(option) {
-  let pageId = option.pageId.startsWith("/") ? option.pageId : "/" + option.pageId
+  let pageId = option.pageId.startsWith("/") ? option.pageId : "/" + option.pageId;
   const PageClass = store.getPage(pageId);
   /**
    * 一个页面可以只定义 wxml， 不定义 js
    */
   if (!PageClass) {
-    console.error("error: pageId not fount " + pageId)
+    console.error("error: pageId not fount " + pageId);
     return;
   }
   store.pushRouter(new PageClass(option.webviewId));

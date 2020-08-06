@@ -1,5 +1,6 @@
 {
   "parser": "babel-eslint",
+  "root": true,
   "parserOptions": {
     "ecmaVersion": 2017,
     "sourceType": "module",
@@ -13,15 +14,14 @@
     "node": true,
     "jest": true
   },
-  "extends": [
-    "eslint:recommended"
-  ],
+  "extends": ["eslint:recommended", "prettier", "prettier/@typescript-eslint", "prettier/standard"],
   "rules": {
     "no-constant-condition": 0,
-    "no-console": [1, {
-      "allow": ["error"]
-    }]
-    // "no-unused-vars": 1,
-    // "react/prop-types": 0,
+    "no-console": [
+      1,
+      {
+        "allow": ["error"]
+      }
+    ]
   }
 }
