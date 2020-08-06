@@ -13,10 +13,7 @@ const renameTag = postcss.plugin("postcss-rename-tag", () => {
           return item
             .split(/\s+/)
             .map((selector) => {
-              return /^\w/.test(selector) &&
-                builtInComponents.includes(selector)
-                ? "wx-" + selector
-                : selector;
+              return /^\w/.test(selector) && builtInComponents.includes(selector) ? "wx-" + selector : selector;
             })
             .join(" ");
         })
@@ -27,7 +24,14 @@ const renameTag = postcss.plugin("postcss-rename-tag", () => {
 
 // TODO: 把不支持的删除
 exports.compilerStyle = async function(pageEntry) {
-  // TODO: 合并 global.css
+  const appWxssPath = path.join(cwd, "app.wxss");
+  let globalContent = "";
+
+  try {
+    globalContent = await fs.promises.readFile(appWxssPath, { encoding: "utf-8" });
+  } catch (error) {
+    //
+  }
 
   const wxssPath = path.join(cwd, pageEntry + ".wxss");
   try {
@@ -37,6 +41,6 @@ exports.compilerStyle = async function(pageEntry) {
   }
 
   const content = await fs.promises.readFile(wxssPath, { encoding: "utf-8" });
-  return postcss([pxtorem({ rootValue: { px: 100, rpx: 100 } }), renameTag()]).process(content)
+  return postcss([pxtorem({ rootValue: { px: 100, rpx: 100 } }), renameTag()]).process(globalContent + "\n" + content)
     .css;
 };
